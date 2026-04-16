@@ -7,3 +7,24 @@
     --text-muted: #9194a6; /*Informações secundárias, ex: descrições*/
     --border: #2a2d3a; /*Cor de borda*/
 }
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; /*Evita scroll horizontal*/
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: alialiased;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+}
