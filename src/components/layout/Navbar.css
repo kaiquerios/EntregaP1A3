@@ -10,3 +10,11 @@
     top: 0;
     z-index: 1000;
 }
+
+*{/*contém logo, barra de busca e botões de navegação*/}
+.navbar-container{
+display: flex;
+align-items: center;
+gap: 40px;
+flex: 1;
+}
