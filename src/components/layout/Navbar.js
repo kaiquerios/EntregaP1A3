@@ -11,7 +11,7 @@ function Navbar() {
             
             <div className='navbar-logo'>
                 {/*incluir icone*/}
-                <span>CLT</span> Gaming
+                💼 <span>CLT</span> Gaming
             </div>
             
     
