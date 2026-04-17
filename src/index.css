@@ -2,7 +2,7 @@
     /*Variáveis de cores - definidas utilizando a ferramenta Canva*/
     --bg-dark: #08090b; /*Fundo da página*/
     --bg-card: #1c1f26; /*Fundo secundários*/
-    --accent: #c6a84b; /*Regiões de destaque como botão de comprar e adicionar ao carrinho*/
+    --contrast: #c6a84b; /*Regiões de destaque como botão de comprar e adicionar ao carrinho*/
     --text-main: #e8eaf0; /*Texto principal da página*/
     --text-muted: #9194a6; /*Informações secundárias, ex: descrições*/
     --border: #2a2d3a; /*Cor de borda*/
