@@ -26,16 +26,17 @@ function Navbar() {
             <a href='#loja' className='navbar-item active'>Loja</a>
             <a href='#biblioteca' className='navbar-item'>Biblioteca</a>
             <a href='#rankings' className='navbar-item'>Rankings</a>
-
-             {/*Deve ser exibido apenas para conta com privilégio ADM*/}
-            {isAdmin && (
-                <a href='#painel' className='navbar-item admin'>Painel ADM</a>
-            )}
             </div>
 
             </div>
 
             <div className='navbar-actions'>
+
+                      {/*Deve ser exibido apenas para conta com privilégio ADM*/}
+                {isAdmin && (
+                <a href='#painel' className='navbar-item admin'>Painel ADM</a>
+                )}
+
                 <div className='action-icon notification'>
                    🔔 <span className='badge-notification'>2</span>
                 </div>
