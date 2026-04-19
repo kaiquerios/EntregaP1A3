@@ -85,7 +85,7 @@ flex: 1;
 
 /*botão painel adm*/
 .navbar-item.admin {
-    background: rgba(198,168,75, 0.1);
+    background: var(--bg-dark);
     padding: 4px 10px;
     border-radius: 4px;
     border: 1px solid var(--contrast);
@@ -108,7 +108,7 @@ flex: 1;
 }
 
 .action-icon:hover, .user-avatar:hover {
-    filter: drop-shadow(0px 4px 6px rgba(255, 196, 17, 0.962))
+    filter: drop-shadow(0px 4px 6px var(--contrast))
 }
 
 .badge-notification, .badge-cart {

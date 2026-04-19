@@ -1,0 +1,131 @@
+.banner-home{
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 1400px;
+    padding: 60px 50px;
+    position: relative;
+    border: 1px solid var (--border);
+}
+
+.banner-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.banner-info {
+    flex: 1;
+}
+
+.banner-label{
+    color: var(--contrast);
+    font-size: 0.8rem;
+    font-weight: 700px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.label-dot{
+    width: 8px;
+    height: 8px;
+    background-color: var(--contrast);
+    border-radius: 50%;
+}
+
+.banner-title {
+    font-size: 3.5rem;
+    font-family: 'Georgia', serif;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.banner-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.banner-description {
+    color: var(--text-muted);
+    max-width: 500px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.banner-pricing{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.price {
+    font-size: 2rem;
+    color: var(--contrast);
+    font-weight: 600;
+}
+
+.banner-btns {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-cart {
+    background: var(--contrast);
+    color: var(--bg-dark);
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-details {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.media-card {
+    background: rgba(255, 255, 255, 0.02);
+    width: 320px;
+    height: 450px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid var(--border);
+}
+
+.media-placeholder { font-size: 6rem; }
+
+.banner-dots {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 35px;
+    height: 5px;
+    background: var(--border);
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.dot.active { background: var(--contrast); }
+
+/* Responsividade Mobile*/
+@media (max-width: 992px) {
+    .banner-media { display: none; }
+    .banner-title { font-size: 2.2rem; }
+}
