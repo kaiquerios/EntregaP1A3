@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import iconCLT from '../../../assets/imgs/icon_clt.png';
 
 function Navbar() {
 
@@ -9,9 +10,9 @@ function Navbar() {
     <nav className='navbar'>
         <div className='navbar-container'>
             
-            <div className='navbar-logo'>
-                {/*incluir icone*/}
-                💼 <span>CLT</span> Gaming
+            <div className='navbar-logo' >
+                <img src={iconCLT} alt="Icone CLT" />
+                <span>CLT</span> Gaming
             </div>
             
     
@@ -32,7 +33,7 @@ function Navbar() {
 
             <div className='navbar-actions'>
 
-                      {/*Deve ser exibido apenas para conta com privilégio ADM*/}
+                {/*Deve ser exibido apenas para conta com privilégio ADM*/}
                 {isAdmin && (
                 <a href='#painel' className='navbar-item admin'>Painel ADM</a>
                 )}
