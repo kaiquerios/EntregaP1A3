@@ -1,0 +1,168 @@
+.navbar{
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/*contém logo, barra de busca e botões de navegação*/
+.navbar-container{
+display: flex;
+align-items: center;
+gap: 40px;
+flex: 1;
+}
+
+.navbar-logo {
+    font-size: 1.4rem; /*utilizado rem para melhor responsividade*/
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+/*cor da sigla CLT*/
+.navbar-logo span {
+    color: var(--contrast);
+}
+
+/*background do input de busca*/
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-dark);
+    border: 1px solid var (--border);
+    border-radius: 8px;
+    padding: 8px 15px;
+    width: 100%;
+    max-width: 350px;
+    transition: border-color 0.3s;
+}
+
+
+/*configuração "padrão" para input de busca*/
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    outline: none;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+/*deve criar uma borda amarela ao clicar na barra de busca*/
+.search-bar:focus-within {
+    box-shadow: 0 0 5px var(--contrast);  
+}
+
+
+.search-icon {
+  cursor: pointer;
+  font-size: 0.9rem; /*caso utilizar imagem ao invés de emoji, remover*/
+}
+
+.navbar-menu{
+  display:flex;
+  gap:25px;  
+}
+
+.navbar-item {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.navbar-item:hover, navbar-item.active{
+    color: var(--contrast)
+}
+
+/*botão painel adm*/
+.navbar-item.admin {
+    background: rgba(198,168,75, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--contrast);
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.action-icon {
+    position: relative;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.action-icon:hover, .user-avatar:hover {
+    filter: drop-shadow(0px 4px 6px rgba(255, 196, 17, 0.962))
+}
+
+.badge-notification, .badge-cart {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: var (--contrast);
+    color: var (--bg-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    border: 2px solid var (--bg-card);
+}
+
+.user-avatar{
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-dark);
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: var(--contrast);
+    cursor: pointer;
+}
+
+/*Responsividade mobile*/
+@media (max-width: 768px){
+    .search-bar, .navbar-item.admin{
+        display: none;
+    } 
+
+    .navbar-container{
+    gap: 10px;
+    }   
+
+    .navbar-logo {
+    font-size: 1.0rem; /*utilizado rem para melhor responsividade*/
+    font-weight: 800;    
+    }
+
+    .navbar-menu{
+        gap: 15px;
+    }
+
+    .navbar-item{
+        font-size: 0.85rem;
+    }
+
+    .navbar{
+        padding: 0 10px; 
+    }
+}

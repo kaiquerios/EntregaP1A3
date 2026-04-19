@@ -1,0 +1,67 @@
+.navbar{
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/*contém logo, barra de busca e botões de navegação*/
+.navbar-container{
+display: flex;
+align-items: center;
+gap: 40px;
+flex: 1;
+}
+
+.navbar-logo {
+    font-size: 1.4rem; /*utilizado rem para melhor responsividade*/
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+/*cor da sigla CLT*/
+.navbar-logo span {
+    color: var(--contrast);
+}
+
+/*background do input de busca*/
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-dark);
+    border: 1px solid var (--border);
+    border-radius: 8px;
+    padding: 8px 15px;
+    width: 100%;
+    max-width: 350px;
+    transition: border-color 0.3s;
+}
+
+
+/*configuração "padrão" para input de busca*/
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    outline: none;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+/*deve criar uma borda amarela ao clicar na barra de busca*/
+.search-bar:focus-within {
+    box-shadow: 0 0 5px var(--contrast);  
+}
+
+
+.search-icon {
+  cursor: pointer;
+  font-size: 0.9rem; /*caso utilizar imagem ao invés de emoji, remover*/
+}
