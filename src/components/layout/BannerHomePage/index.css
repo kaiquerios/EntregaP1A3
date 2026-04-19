@@ -82,15 +82,33 @@
     border: none;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.btn-details {
+.btn-cart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px var(--contrast); /* Usando um brilho sutil */
+}
+
+.btn-details, .btn-wishlist {
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text-main);
     padding: 12px 20px;
     border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-details:hover {
+    transform: translateY(-2px);
+    border-color: var(--contrast);
+}
+
+.btn-wishlist:hover {
+    transform: translateY(-2px);
+    border-color: #ff4d6d; /* Um tom avermelhado/rosa para o coração */
+    color: #ff4d6d;
 }
 
 .media-card {

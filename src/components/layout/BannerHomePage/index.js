@@ -6,6 +6,7 @@ function Banner() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [loading, setLoading] = useState(true);
 
+    //busca de dados na api
     useEffect(() => {
         const apiUrl = 'http://localhost:8080/api/v1/public/jogos';
 
@@ -20,6 +21,20 @@ function Banner() {
                 setLoading(false);
             });
     }, []);
+
+    //efeito de carrossel (timing)
+
+    useEffect(() => {
+        if (games.length === 0) return;
+
+        const timer = setInterval(() => {
+            setActiveIndex((currentValue) =>{
+                return currentValue === games.length - 1 ? 0 : currentValue + 1;
+            })
+        }, 3000);
+
+        return () => clearInterval(timer);
+    }, [games.length])
 
     if (loading) return <div className='banner-loading'>Sincronizando jogos da API...</div>
     if (games.length === 0) return null;
@@ -52,6 +67,7 @@ function Banner() {
 
                     <div className='banner-btns'>
                         <button className='btn-cart'>Adicionar ao carrinho</button>
+                        <button className='btn-wishlist'>♡ Lista de desejos</button>
                         <button className='btn-details'>Ver detalhes</button>
                     </div>
                 </div>
