@@ -7,9 +7,8 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <h1>Olá, CLT Gaming!</h1>
-      /*<EditUser />*/
-
+      {/* Conteudo aqui, apenas teste */}
+      <EditUser />
     </div>
   );
 }
