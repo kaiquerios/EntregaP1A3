@@ -26,6 +26,12 @@ function Banner() {
 
     const currentGame = games[activeIndex];
 
-    
+    return (
+        <section classNam="banner-home">
+            
+        </section>
+    )
 
 }
+
+export default Banner;
