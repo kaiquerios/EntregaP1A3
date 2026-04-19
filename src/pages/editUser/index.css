@@ -1,3 +1,4 @@
+/* Background */
 .edit-user-overlay {
   position: fixed;
   top: 0;
@@ -11,22 +12,24 @@
   z-index: 2000;
 }
 
+/* Forms */
 .edit-user-container {
   background-color: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 30px;
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 36px 32px;
   width: 100%;
-  max-width: 480px;
+  max-width: 580px;
   max-height: 90vh;
   overflow-y: auto;
 }
 
+/* Cabeçalho */
 .edit-user-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .edit-user-title {
@@ -39,7 +42,7 @@
   background: transparent;
   border: none;
   color: var(--text-muted);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: color 0.2s;
 }
@@ -48,12 +51,13 @@
   color: var(--contrast);
 }
 
+/* Foto de perfil */
 .edit-user-avatar-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 28px;
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
 .edit-user-avatar {
@@ -74,9 +78,9 @@
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-muted);
-  font-size: 0.85rem;
-  padding: 5px 14px;
-  border-radius: 6px;
+  font-size: 0.8rem;
+  padding: 5px 16px;
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -84,4 +88,110 @@
 .edit-user-avatar-btn:hover {
   border-color: var(--contrast);
   color: var(--contrast);
+}
+
+/* Formulário */
+.edit-user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edit-user-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-user-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.edit-user-input {
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.edit-user-input:focus {
+  border-color: var(--contrast);
+  box-shadow: 0 0 6px rgba(198, 168, 75, 0.2);
+}
+
+.edit-user-input--readonly {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.edit-user-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Botão abrir bloco */
+.edit-user-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.edit-user-toggle-btn:hover {
+  border-color: var(--contrast);
+  color: var(--contrast);
+}
+
+/* Bloco de alteração */
+.edit-user-expandable {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* Botão confirmar */
+.edit-user-confirm-btn {
+  background: transparent;
+  border: 1px solid var(--contrast);
+  color: var(--contrast);
+  border-radius: 10px;
+  padding: 11px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.edit-user-confirm-btn:hover {
+  background-color: var(--contrast);
+  color: var(--bg-dark);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .edit-user-container {
+    margin: 16px;
+    padding: 24px 20px;
+  }
 }
