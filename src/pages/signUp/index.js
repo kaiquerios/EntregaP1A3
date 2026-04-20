@@ -3,6 +3,9 @@ import './index.css';
 
 function SignUp() {
     const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        birthdate: '',
         username: '',
         email: '',
         confirmEmail: '',
@@ -34,7 +37,10 @@ function SignUp() {
         
     };
 
-    const isFormInvalid = 
+    const isFormInvalid =
+        !formData.firstName ||
+        !formData.lastName || 
+        !formData.birthdate ||
         !formData.username || 
         !formData.email || 
         !formData.confirmEmail || 
@@ -46,6 +52,18 @@ function SignUp() {
             <div className="auth-card">
                 <form className="auth-form" onSubmit={handleSubmt}>
                     <h2>Criar Conta</h2>
+
+                    <div className="form-row">
+                        <div className="form-field">
+                            <label>Nome</label>
+                            <input type="text" name="firstName" placeholder="Ex: Carlos" onChange={handleChange} />
+                        </div>
+
+                        <div className="form-fiel">
+                            <label>Sobrenome</label>
+                            <input type="text" name="lastName" placeholder="Ex: Roberto" onChange={handleChange} />
+                        </div>
+                    </div>
 
                     <div className="form-field">
                         <label>Nickname</label>

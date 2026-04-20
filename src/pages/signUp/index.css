@@ -109,3 +109,18 @@
         padding: 25px;
     }
 }
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-field {
+    flex: 1;
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+    }
+}
