@@ -40,7 +40,7 @@ function SignUp() {
     const isFormInvalid =
         !formData.firstName ||
         !formData.lastName || 
-        !formData.birthdate ||
+        !formData.birthDate ||
         !formData.username || 
         !formData.email || 
         !formData.confirmEmail || 
@@ -56,14 +56,19 @@ function SignUp() {
                     <div className="form-row">
                         <div className="form-field">
                             <label>Nome</label>
-                            <input type="text" name="firstName" placeholder="Ex: Carlos" onChange={handleChange} />
+                            <input type="text" name="firstName" placeholder="Ex: Chris" onChange={handleChange} />
                         </div>
 
-                        <div className="form-fiel">
+                        <div className="form-field">
                             <label>Sobrenome</label>
-                            <input type="text" name="lastName" placeholder="Ex: Roberto" onChange={handleChange} />
+                            <input type="text" name="lastName" placeholder="Ex: Redfield" onChange={handleChange} />
                         </div>
                     </div>
+
+                    <div className="form-field">
+                            <label>Data de Nascimento</label>
+                            <input type="text" name="birthDate" onChange={handleChange} className="input-date" />
+                        </div>
 
                     <div className="form-field">
                         <label>Nickname</label>

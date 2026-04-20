@@ -124,3 +124,8 @@
         flex-direction: column;
     }
 }
+
+.input-date: :-webkit-calendar-picker-indicator {
+    filter: invert (1);
+    cursor: pointer;
+}
