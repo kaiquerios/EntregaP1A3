@@ -49,6 +49,15 @@
     margin-bottom: 25px;
 }
 
+.banner-tag {
+    background-color: var(--bg-card);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border)
+}
+
 .banner-description {
     color: var(--text-muted);
     max-width: 500px;
