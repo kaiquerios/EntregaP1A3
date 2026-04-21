@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './index.css';
 import iconCLT from '../../../assets/img/icon_clt.png';
 
@@ -8,6 +8,7 @@ function Navbar() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [user, setUser] = useState(null);
+    const menuRef = useRef(null);
 
     // Verifica se já existe um token ao carregar a página
     
@@ -17,6 +18,21 @@ function Navbar() {
             processToken(token);
         }
     }, []);
+
+    // Função que verifica clique para fechar o menu flutuante
+    useEffect(() => {
+        
+        function handleClickOutside(event) {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [menuRef]);
 
     // Recolhimento dos dados brutos e verificação de ADM
     const processToken = (token) => {
@@ -93,7 +109,7 @@ function Navbar() {
                            🛒 <span className='badge-cart'>3</span>
                         </div>
 
-                        <div className='user-profile'>
+                        <div className='user-profile' ref={menuRef}>
                             <span 
                                 className='user-avatar' 
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
