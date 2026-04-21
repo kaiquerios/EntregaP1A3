@@ -5,7 +5,7 @@ function SignUp() {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
-        birthdate: '',
+        birthDate: '',
         username: '',
         email: '',
         confirmEmail: '',
@@ -19,8 +19,49 @@ function SignUp() {
         setFormData(prev => ({ ...prev, [name]: value}));
     };
 
+    const handleDateChange = (e) => {
+        let val = e.target.value.replace(/\D/g, '');
+        let formattedVal = '';
+
+        if (val.length > 0) {
+            let day = parseInt(val.substring(0, 2));
+            if (day > 31) val = '31' + val.substring(2);
+
+            formattedVal = val.substring(0, 2);
+            if (val.length >2) {
+                let month = parseInt(val.substring(2, 4));
+                if (month > 12) val = val.substring(0, 2) + '12' + val.substring(4);
+
+                formattedVal += '/' + val.substring(2, 4);
+            }
+
+            if (val.length > 4) {
+                formattedVal += '/' + val.substring(4, 8);
+            }
+        }
+
+        setFormData(prev => ({ ...prev, birthDate: formattedVal.substring(0, 10)}));
+    };
+
+    
+
     const handleSubmt = (e) => {
         e.preventDefault();
+
+        const dateParts = formData.birthDate.split('/');
+
+        if (dateParts.length !==3) {
+            alert("Por favor, preencha a data de nascimento completa.");
+            return;
+        }
+
+        const isoDate = '${dateParts[2]}-${dateParts[1]}-${dateParts[0]}';
+
+        const dataParaEnviar = {
+            ...formData, birthDate: isoDate
+        };
+
+        console.log("Dados prontos para o Banco de Dados:", dataParaEnviar);
 
         if (formData.email !== formData.confirmEmail) {
             alert("Os e-mails não coincidem!");
@@ -67,7 +108,7 @@ function SignUp() {
 
                     <div className="form-field">
                             <label>Data de Nascimento</label>
-                            <input type="text" name="birthDate" onChange={handleChange} className="input-date" />
+                            <input type="text" name="birthDate" placeholder="DD/MM/AAAA" value={formData.birthDate} onChange={handleChange} maxLength="10" className="input-date" />
                         </div>
 
                     <div className="form-field">
