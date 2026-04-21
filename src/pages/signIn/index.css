@@ -18,3 +18,10 @@
     max-width: 400px;
     color: #ffffff;
 }
+
+/*título e logo*/
+.signin-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
