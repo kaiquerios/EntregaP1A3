@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const userArea = document.getElementById('user-area');
+    const navNotif = document.getElementById('nav-notification');
+    const navCart = document.getElementById('nav-cart');
 
     // 1. Função dinâmica que verifica o login e atualiza a tela
     function renderUserArea() {
@@ -9,12 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (token) {
             // CONTEXTO: LOGADO
+            if(navNotif) navNotif.style.display = 'flex';
+            if(navCart) navCart.style.display = 'flex';
+
             userArea.innerHTML = `
                 <span class="user-avatar" id="avatar-btn">AR</span>
                 <div class="user-dropdown" id="user-dropdown">
                     <div class="dropdown-header">
                         <p class="user-name">Alisson Rodrigo</p>
-                        <p class="user-role">Administrador</p>
                     </div>
                     <div class="dropdown-divider"></div>
                     <a href="#conta" class="dropdown-item">Editar conta</a>
@@ -45,6 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } else {
             // CONTEXTO: DESLOGADO
+            if(navNotif) navNotif.style.display = 'none';
+            if(navCart) navCart.style.display = 'none';
+
             userArea.innerHTML = `<a href="login.html" class="btn-login">Entrar</a>`;
         }
     }
@@ -64,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const navbarMenu = document.getElementById('navbar-menu');
 
-    // Boa prática: Verificar se os elementos existem antes de adicionar o evento
+
     if (mobileBtn) {
         mobileBtn.addEventListener('click', () => {
             navbarMenu.classList.toggle('active');
