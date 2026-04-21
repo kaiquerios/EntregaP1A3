@@ -96,9 +96,12 @@ function SignUp() {
     return (
         <div className="auth-wrapper">
             <div className="auth-card">
-                <form className="auth-form" onSubmit={handleSubmt}>
-                    <h2>Criar Conta</h2>
+                <div className="auth-header">
+                    <h2>Criar <span>Conta</span></h2>
+                    <p>Preencha os dados abaixo para começar</p>
+                </div>  
 
+                <form className="auth-form" onSubmit={handleSubmt}>
                     <div className="form-row">
                         <div className="form-field">
                             <label>Nome</label>
