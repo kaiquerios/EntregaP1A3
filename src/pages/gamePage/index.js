@@ -16,7 +16,7 @@ function GamePage() {
               <section className='game-hero'>
 
                  {/* Mídia expandida + thumbnails */}
-                 <div className='media-main'>
+                 <div className='media-block'>
                      <div className='media-main'>
                         {/* TODO: <img> ou <video> vindo da API*/}
                         <span>Mídia expandida</span>
