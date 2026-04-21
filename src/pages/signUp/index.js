@@ -13,6 +13,14 @@ function SignUp() {
         confirmPassword: '',
         genre: '',
     });
+
+    const handleTextChange = (e) => {
+        const { name, value } = e.target;
+
+        const onlyLetters = value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+
+        setFormData(prev => ({ ...prev, [name]: onlyLetters }));
+    };
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -41,8 +49,6 @@ function SignUp() {
         }
         setFormData(prev => ({ ...prev, birthDate: formattedVal.substring(0, 10)}));
     };
-
-    
 
     const handleSubmt = (e) => {
         e.preventDefault();
@@ -96,11 +102,11 @@ function SignUp() {
                     <div className="form-row">
                         <div className="form-field">
                             <label>Nome</label>
-                            <input type="text" name="firstName" placeholder="Ex: Chris" onChange={handleChange} />
+                            <input type="text" name="firstName" placeholder="Ex: Chris" value={formData.firstName} onChange={handleTextChange} />
                         </div>
                         <div className="form-field">
                             <label>Sobrenome</label>
-                            <input type="text" name="lastName" placeholder="Ex: Redfield" onChange={handleChange} />
+                            <input type="text" name="lastName" placeholder="Ex: Redfield" value={formData.lastName} onChange={handleTextChange} />
                         </div>
                     </div>
 
