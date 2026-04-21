@@ -9,6 +9,7 @@ function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [user, setUser] = useState(null);
     const menuRef = useRef(null);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     
      // Recolhimento dos dados brutos e verificação de ADM
     const processToken = useCallback((token) => {
@@ -48,7 +49,7 @@ function Navbar() {
         };
     }, [menuRef]);
 
-
+    // Apagar token
     const handleLogout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
@@ -73,6 +74,10 @@ function Navbar() {
     return(
     <nav className='navbar'>
         <div className='navbar-container'>
+
+            <div className='mobile-menu-icon' onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                {isMobileMenuOpen ? '✖' : '☰'}
+            </div>
             
             <div className='navbar-logo'>
                 <img src={iconCLT} alt="Icone CLT" />
@@ -87,10 +92,10 @@ function Navbar() {
             </div>
 
         {/*Menu de navegação*/}
-            <div className='navbar-menu'>
-                <a href='#loja' className='navbar-item'>Loja</a>
-                <a href='#biblioteca' className='navbar-item'>Biblioteca</a>
-                <a href='#rankings' className='navbar-item'>Rankings</a>
+            <div className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+                <a href='#loja' className='navbar-item' onClick={() => setIsMobileMenuOpen(false)}>Loja</a>
+                <a href='#biblioteca' className='navbar-item' onClick={() => setIsMobileMenuOpen(false)}>Biblioteca</a>
+                <a href='#rankings' className='navbar-item' onClick={() => setIsMobileMenuOpen(false)}>Rankings</a>
             </div>
 
         </div>

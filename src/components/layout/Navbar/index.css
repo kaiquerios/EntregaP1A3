@@ -237,35 +237,65 @@ gap: 40px;
     background-color: rgba(255, 77, 77, 0.1);
 }
 
+.mobile-menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
 /*Responsividade mobile*/
 @media (max-width: 768px){
-    .search-bar, .navbar-item.admin, .navbar-logo img{
+    .mobile-menu-icon {
+        display: block; /* Revela o sanduíche */
+        order: -1; /* Garante que ele fique antes do logo se necessário */
+    }
+
+    .navbar-logo img, .navbar-item.admin {
         display: none;
-    } 
-
-    .navbar-container{
-    gap: 20px;
-    }   
-
-    .navbar-logo {
-    font-size: 1.0rem; /*utilizado rem para melhor responsividade*/
-    font-weight: 800;   
-    gap: 5px; 
     }
 
-    .navbar-menu{
+    /* 1. Ajuste da Busca: Agora ela aparece, mas menor */
+    .search-bar {
+        display: flex;
+        max-width: 150px; /* Reduz o tamanho para caber no iPhone */
+        padding: 5px 10px;
+    }
+
+    /* 2. Transformação do Menu em Sanduíche (Gaveta) */
+    .navbar-menu {
+        position: fixed;
+        left: -100%; /* Escondido fora da tela */
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--bg-card);
+        width: 100%;
+        height: calc(100vh - 70px);
+        gap: 0;
+        transition: 0.3s;
+        border-top: 1px solid var(--border);
+        z-index: 999;
+    }
+
+    .navbar-menu.active {
+        left: 0; /* Desliza para dentro da tela */
+    }
+
+    .navbar-item {
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+        width: 100%;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    .navbar-container {
         gap: 10px;
+        width: 100%;
+        justify-content: flex-start;
     }
-
-    .navbar-item{
-        font-size: 0.85rem;
-    }
-
-    .navbar{
-        padding: 0 10px; 
-    }
-
-    .navbar-actions{
-        gap: 12px;
+    
+    .navbar-logo {
+        font-size: 0.9rem;
     }
 }
