@@ -30,3 +30,15 @@
     color: #7d5fff; {/*Cor de destaque*/}
     font-weight: bold;
 }
+
+{/*Mensagem de erro*/}
+.error-message {
+    background-color: rgba(255, 46, 46, 0.1);
+    color: #ff4e4e;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ff4e4e;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+}
