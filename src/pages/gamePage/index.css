@@ -322,3 +322,207 @@
     border-color: var(--contrast);
     opacity: 0.9;
 }
+
+/* Seção "Sobre o jogo" */
+.about-text {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+}
+
+/* Requisitos do sistema */
+.requirements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.requirements-block {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.requirements-block h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 14px;
+}
+
+.req-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.82rem;
+}
+
+.req-label {
+    color: var(--text-muted);
+    min-width: 90px;
+    flex-shrink: 0;
+}
+
+.req-label {
+    color: var(--text-muted);
+    min-width: 90px;
+    flex-shrink: 0;
+}
+
+.req-value {
+    color: var(--text-main);
+}
+
+/* Jogos similares */
+.similar-games {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+.similar-game-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.similar-game-card:hover {
+    border-color: var(--contrast);
+    transform: translateY(-3px);
+}
+
+.similar-game-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+.similar-game-name {
+    position: relative;
+    z-index: 1;
+    background: rgba(8,9,11,0.55);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Análise de outros usuários */
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.review-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.review-card-body {
+    flex: 1;
+}
+
+.review-card-text {
+    background-color: var(--bg-dark);
+    border-radius: 8px;
+    min-height: 70px;
+    padding: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.review-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewer-name {
+    font-size: 0.78em;
+    color: var(--text-muted);
+    margin-top: 4px;
+    text-align: center;
+}
+
+.btn-see-all {
+   display: block;
+   margin: 0 auto;
+   padding: 10px 30px;
+   background: transparent;
+   border: 1px solid var(--border);
+   border-radius: 8px;
+   color: var(--text-muted);
+   font-size: 0.85rem;
+   cursor: pointer;
+   transition: border-color 0.2s, opacity 0.2s;
+}
+
+.btn-see-all:hover {
+    border-color: var(--contrast);
+    color: var(--contrast);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .game-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .game-sidebar {
+        order: -1; /* sidebar sobe para o topo em mobile */
+    }
+
+    .similar-games {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .requirements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-page {
+        padding: 0 16px 40px;
+    }
+
+    .breadcrumbs {
+        padding: 10px 16px;
+    }
+
+    .similar-games {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .review-form {
+        flex-direction: column;
+    }
+    
+    .user-avatar-lg {
+        width: 48px;
+        height: 48px;
+    }
+}
