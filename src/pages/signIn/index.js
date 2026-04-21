@@ -11,4 +11,9 @@ function SignIn() {
     const handleSubmit = (e) => {
         e.preventDefault(); // Impede a página de recarregar
 }
+{/*validação simples*/}
+        if (!email || !password) {
+            setError('Por favor, preencha todos os campos.');
+            return;
+        }
 export default SignIn;
