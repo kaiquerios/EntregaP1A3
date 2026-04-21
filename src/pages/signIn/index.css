@@ -85,3 +85,29 @@
     transition: background-color 0.3s ease, transform 0.1s ease;
     margin-top: 10px;
 }
+
+.btn-signin:hover {
+    background-color: #6741d9;
+}
+
+.btn-signin:active {
+    transform: scale(0.98);
+}
+
+{/*Rodapé do formulário*/}
+.signin-footer {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.signin-footer a {
+    color: #7d5fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signin-footer a:hover {
+    text-decoration: underline;
+}
