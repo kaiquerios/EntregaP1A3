@@ -83,3 +83,22 @@
     padding: 50px;
     font-style: italic;
 }
+
+/* Aplicação de Responsividade */
+@media (max-width: 1200px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas em tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .category-section {
+        padding: 0 20px;
+    }
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
+    }
+    .category-title {
+        font-size: 1.5rem;
+    }
+}
