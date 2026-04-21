@@ -7,5 +7,8 @@ function SignIn() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+{/função que lida com o envio do furmulário*/}
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Impede a página de recarregar
 }
 export default SignIn;
