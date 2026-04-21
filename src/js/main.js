@@ -3,10 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const userArea = document.getElementById('user-area');
     const navNotif = document.getElementById('nav-notification');
     const navCart = document.getElementById('nav-cart');
-
-    // 1. Função dinâmica que verifica o login e atualiza a tela
+    
     function renderUserArea() {
-        // Verifica no navegador se o passaporte (token) existe
         const token = localStorage.getItem('token'); 
 
         if (token) {
@@ -34,17 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Toggle do menu de usuário
             avatarBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Evita fechar imediatamente
+                e.stopPropagation();
                 userDropdown.classList.toggle('active');
             });
 
-            // LÓGICA DE LOGOUT
+            // Lógica de Logout: limpa token e carrinho
             logoutBtn.addEventListener('click', () => {
-                localStorage.removeItem('token'); // Apaga o token
-                localStorage.removeItem('cartCount'); //Apaga a contagem do carrinho
+                localStorage.removeItem('token'); 
+                localStorage.removeItem('cartCount'); 
                 cartCount = 0;
                 updateCartBadge();
-                renderUserArea(); // Renderiza a área de novo (agora sem token)
+                renderUserArea(); 
             });
 
         } else {
@@ -58,19 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderUserArea();
 
-    // Fechar ao clicar fora do menu de usuário (Global)
+    // Fechar menu de usuário ao clicar fora
     document.addEventListener('click', (e) => {
         const userDropdown = document.getElementById('user-dropdown');
-        // Se o menu existir, estiver ativo e o clique for de fora, ele fecha
         if (userDropdown && userDropdown.classList.contains('active') && !userArea.contains(e.target)) {
             userDropdown.classList.remove('active');
         }
     });
 
-    /*MENU MOBILE */
+    /*MENU MOBILE*/
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const navbarMenu = document.getElementById('navbar-menu');
-
 
     if (mobileBtn) {
         mobileBtn.addEventListener('click', () => {
@@ -79,12 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* LÓGICA DO CARROSSEL*/
-    const mockGames = [
-        { nome: "Cyber Hunter 2077", empresa: "NexoGames", categoria: "RPG", ano: "2025", preco: "299,90", descricao: "Explore uma metrópole futurista com gráficos de tirar o fôlego." },
-        { nome: "Medieval Warfare II", empresa: "CastleStudio", categoria: "Ação", ano: "2026", preco: "199,50", descricao: "Lidere seus exércitos em batalhas medievais épicas." },
-        { nome: "Space Explorer VR", empresa: "GalaxyTech", categoria: "Simulação", ano: "2024", preco: "150,00", descricao: "Viaje pelo cosmos em uma simulação realista de realidade virtual." }
-    ];
+    /*LÓGICA DO CARROSSEL*/
+    
+    // Seleciona os 5 primeiros jogos do banco de dados para o destaque
+    const destaqueGames = typeof jogosDB !== 'undefined' ? jogosDB.slice(0, 5) : [];
 
     let currentSlide = 0;
     const bannerTitulo = document.getElementById('banner-titulo');
@@ -95,9 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const bannerPreco = document.getElementById('banner-preco');
     const dotsContainer = document.getElementById('banner-dots-container');
 
-    // Inicializa os pontos do carrossel (Verificando se o container existe na página)
-    if (dotsContainer) {
-        mockGames.forEach((_, index) => {
+    if (dotsContainer && destaqueGames.length > 0) {
+        dotsContainer.innerHTML = ''; // Limpa indicadores estáticos
+
+        destaqueGames.forEach((_, index) => {
             const dot = document.createElement('span');
             dot.classList.add('dot');
             if(index === 0) dot.classList.add('active');
@@ -108,78 +103,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function updateBanner(index) {
             currentSlide = index;
-            const game = mockGames[index];
+            const game = destaqueGames[index];
             
             bannerTitulo.textContent = game.nome;
             bannerEmpresa.textContent = game.empresa;
             bannerCategoria.textContent = game.categoria;
             bannerAno.textContent = game.ano;
             bannerDescricao.textContent = game.descricao;
-            bannerPreco.textContent = `R$ ${game.preco}`;
+            
+            // Formatação de moeda para o padrão brasileiro
+            const precoFormatado = parseFloat(game.preco).toFixed(2).replace('.', ',');
+            bannerPreco.textContent = `R$ ${precoFormatado}`;
 
-            // Atualiza as bolinhas (dots)
             document.querySelectorAll('.dot').forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
         }
 
-        // Carrega o primeiro jogo
         updateBanner(0);
 
-        // Carrossel Automático
         setInterval(() => {
-            let nextSlide = (currentSlide + 1) % mockGames.length;
+            let nextSlide = (currentSlide + 1) % destaqueGames.length;
             updateBanner(nextSlide);
-        }, 4000); // Roda a cada 4 segundos
+        }, 4000); 
     }
 
-    /*NUMERAÇÃO DO CARRINHO*/
+    /*GESTÃO DO CARRINHO*/
     
-    // 1. Mapeamos os elementos
     const btnCart = document.querySelector('.btn-cart'); 
     const badgeCart = document.querySelector('.badge-cart');
-
-    // 2. Buscamos se já existe algo no carrinho salvo no navegador
     let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
 
-    // 3. Função para atualizar a bolinha visual na Navbar
     function updateCartBadge() {
         if (badgeCart) {
             badgeCart.textContent = cartCount;
         }
     }
 
-    // Chama a função logo que a página carrega para mostrar o número correto
     updateCartBadge();
 
-    // 4. O evento de clique no botão do banner
-    if (btnCart && badgeCart) {
+    if (btnCart) {
         btnCart.addEventListener('click', () => {
-
             const token = localStorage.getItem('token');
 
+            // Redireciona para login se não estiver logado
             if (!token) {
                 window.location.href = 'login.html';
-                return; 
+                return;
             }
-            // Incrementa o número
+
+            // Se logado, adiciona ao carrinho
             cartCount++; 
             localStorage.setItem('cartCount', cartCount); 
             updateCartBadge(); 
 
+            // Feedback visual no botão
             const textoOriginal = btnCart.textContent; 
-            
             btnCart.textContent = '✓ Adicionado!';
-            btnCart.style.backgroundColor = '#28a745'; // Fundo verde
+            btnCart.style.backgroundColor = '#28a745';
             btnCart.style.color = '#fff';
-            btnCart.style.transform = 'scale(0.95)'; // Efeito de "aperto"
 
-            // lógica para o botão voltar ao normal
             setTimeout(() => {
                 btnCart.textContent = textoOriginal;
-                btnCart.style.backgroundColor = ''; // Remove o estilo inline (volta pro CSS)
+                btnCart.style.backgroundColor = '';
                 btnCart.style.color = '';
-                btnCart.style.transform = '';
             }, 1500);
         });
     }
