@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Navbar from './components/layout/Navbar/index';
-import EditUser from './components/layout/EditUser/index';
+import EditUser from './components/layout/ModalEditUser/index';
 
 function App() {
   const [showEditUser, setShowEditUser] = useState(true);
