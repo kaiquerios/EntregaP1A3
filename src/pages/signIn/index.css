@@ -42,3 +42,10 @@
     font-size: 0.9rem;
     text-align: center;
 }
+
+{/*Grupos de input*/}
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
