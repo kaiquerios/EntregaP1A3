@@ -31,23 +31,12 @@ function SearchInClass(){
                     'VR': '🥽'
                 };
 
-           /*  data.forEach(jogo =>{
-                if (!seen.has(jogo.categoria) && iconMap[jogo.categoria]) {
-                    seen.add(jogo.categoria);
-                    uniqueCategories.push({
-                        name: jogo.categoria,
-                        icon: iconMap[jogo.categoria],
-                        // contagem de jogos por categoria
-                        count: `${data.filter(j => j.categoria === jogo.categoria).length} jogos`
-                    });
-                }
-            }); */
 
             data.forEach(jogo => {
-            // O .trim() remove o \r invisível e qualquer espaço extra
+            // O .trim() remove o \r invisível e qualquer espaço extra (visto através do insomnia)
             const categoriaLimpa = jogo.categoria ? jogo.categoria.trim() : "";
 
-            // Agora a comparação com o iconMap vai funcionar!
+            
             if (!seen.has(categoriaLimpa) && iconMap[categoriaLimpa]) {
              seen.add(categoriaLimpa);
              uniqueCategories.push({
