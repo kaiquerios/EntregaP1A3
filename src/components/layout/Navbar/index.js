@@ -1,10 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 import iconCLT from '../../../assets/img/icon_clt.png';
 
 function Navbar() {
 
-    const isAdmin = true;
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [user, setUser] = useState(null);
+
+    // Verifica se já existe um token ao carregar a página
+    
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            processToken(token);
+        }
+    }, []);
+
+    // Recolhimento dos dados brutos e verificação de ADM
+    const processToken = (token) => {
+        try {
+            const payloadBase64 = token.split('.')[1];
+            const decodedPayload = JSON.parse(atob(payloadBase64));
+            
+            setUser({ nome: decodedPayload.nome, perfil: decodedPayload.perfil });
+            setIsLoggedIn(true);
+            setIsAdmin(decodedPayload.perfil === 'Administrador' || decodedPayload.perfil === 'Admin');
+        } catch (error) {
+            console.error("Erro ao ler o token", error);
+            handleLogout();
+        }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+        setUser(null);
+        setIsAdmin(false);
+        setIsMenuOpen(false);
+        // adicionar redirecionamento para a página inicial
+        // window.location.href = '/'; 
+    };
+
+    //Recolher iniciais para inserir no avatar
+    const getInitials = (fullName) => {
+        if (!fullName) return "";
+        const parts = fullName.trim().split(' ');
+        if (parts.length >= 2) {
+            return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
+        }
+        return parts[0].substring(0, 2).toUpperCase();
+    };
 
     return(
     <nav className='navbar'>
@@ -18,40 +65,65 @@ function Navbar() {
     
         {/*No primeiro momento, essa barra deve sumir em mobile*/}
             <div className='search-bar'>
-            <input type='text' placeholder='Buscar jogos...'/>
-            <span className='search-icon'>{/*incluir icone*/}🔎</span>
+                <input type='text' placeholder='Buscar jogos...'/>
+                <span className='search-icon'>{/*incluir icone*/}🔎</span>
             </div>
 
         {/*Menu de navegação*/}
             <div className='navbar-menu'>
-            <a href='#loja' className='navbar-item'>Loja</a>
-            <a href='#biblioteca' className='navbar-item'>Biblioteca</a>
-            <a href='#rankings' className='navbar-item'>Rankings</a>
+                <a href='#loja' className='navbar-item'>Loja</a>
+                <a href='#biblioteca' className='navbar-item'>Biblioteca</a>
+                <a href='#rankings' className='navbar-item'>Rankings</a>
             </div>
 
-            </div>
+        </div>
 
             <div className='navbar-actions'>
+                {isLoggedIn ? (
+                    <>
+                        {isAdmin && (
+                            <a href='#painel' className='navbar-item admin'>Painel ADM</a>
+                        )}
 
-                      {/*Deve ser exibido apenas para conta com privilégio ADM*/}
-                {isAdmin && (
-                <a href='#painel' className='navbar-item admin'>Painel ADM</a>
+                        <div className='action-icon notification'>
+                           🔔 <span className='badge-notification'>2</span>
+                        </div>
+
+                        <div className='action-icon cart'>
+                           🛒 <span className='badge-cart'>3</span>
+                        </div>
+
+                        <div className='user-profile'>
+                            <span 
+                                className='user-avatar' 
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            >
+                                {getInitials(user?.nome)}
+                            </span>
+                            
+                            {isMenuOpen && (
+                                <div className='user-dropdown'>
+                                    <div className='dropdown-header'>
+                                        <p className='user-name'>{user?.nome}</p>
+                                        <p className='user-role'>{user?.perfil}</p>
+                                    </div>
+                                    <div className='dropdown-divider'></div>
+                                    <a href="#conta" className='dropdown-item'>Editar conta</a>
+                                    <a href="#pagamento" className='dropdown-item'>Métodos de pagamento</a>
+                                    <div className='dropdown-divider'></div>
+                                    <button onClick={handleLogout} className='dropdown-item logout-btn'>Finalizar sessão</button>
+                                </div>
+                            )}
+                        </div>
+                    </>
+                ) : (
+                    /* Agora é apenas um link/botão que redireciona para a página do seu colega */
+                    <a href="/login" className='btn-login' style={{ textDecoration: 'none' }}>
+                        Entrar
+                    </a>
                 )}
-
-                <div className='action-icon notification'>
-                   🔔 <span className='badge-notification'>2</span>
-                </div>
-
-                <div className='action-icon cart'>
-                   🛒 <span className='badge-cart'>3</span>
-                </div>
-
-                <div className='user-profile'>
-                    <span className='user-avatar'>AR</span>
-                </div>
             </div>
-    
-    </nav>
+        </nav>
     );
 }
 

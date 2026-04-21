@@ -148,6 +148,22 @@ flex: 1;
     cursor: pointer;
 }
 
+.btn-login {
+    background-color: var(--contrast);
+    color: var(--bg-dark);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    filter: brightness(1.1);
+}
+
 /*Responsividade mobile*/
 @media (max-width: 768px){
     .search-bar, .navbar-item.admin{
