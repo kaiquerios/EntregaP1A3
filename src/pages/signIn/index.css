@@ -1,0 +1,9 @@
+/*container que sinaliza tudo na tela*/
+.signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Ocupa a altura da tela descontando a navbar */
+    padding: 20px;
+    background-color: #0f0f0f; /* Fundo escuro padrão gaming */
+}
