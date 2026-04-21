@@ -1,0 +1,520 @@
+/* ---------- Layout principal ---------- */
+.game-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px 60px;
+}
+
+/* ---------- Seção hero: mídia + sidebar ---------- */
+.game-hero {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* --- Bloco de mídia --- */
+.media-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.media-main {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.media-main img,
+.media-main video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Thumbnails de mídia */
+.media-thumbs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.media-thumbs::-webkit-scrollbar {
+    height: 4px;
+}
+.media-thumbs::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.media-thumb {
+    flex-shrink: 0;
+    width: 100px;
+    height: 60px;
+    border-radius: 6px;
+    background-color: var(--bg-card);
+    border: 2px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.media-thumb:hover,
+.media-thumb.active {
+    border-color: var(--contrast);
+}
+
+.media-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Sidebar de compra --- */
+.game-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.game-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.game-cover {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border);
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.game-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--text-main);
+}
+
+/* Tags de gênero/categoria */
+.game-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game-tag {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.game-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--contrast);
+    align-self: flex-start;
+    width: 100%;
+}
+
+/* Botões de ação */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--contrast);
+    color: #08090b;
+}
+
+.btn-secondary {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+}
+
+.btn:hover {
+    opacity: 0.88;
+}
+
+/* Tabela de info (Desenvolvedor, Distribuidora, Data) */
+.game-info-table {
+    width: 100%;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.game-info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+.game-info-label {
+    color: var(--text-muted);
+}
+
+.game-info-value {
+    color: var(--text-main);
+    font-weight: 500;
+    text-align: right;
+}
+
+/* ---------- Seção genérica (card cinza) ---------- */
+.section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 14px;
+}
+
+.section-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* ---------- Seção de análise do usuário ---------- */
+.review-form {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.user-avatar-lg {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    font-weight: 600;
+}
+
+.review-form-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review-textarea {
+    width: 100%;
+    min-height: 90px;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.88rem;
+    padding: 12px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.review-textarea:focus {
+    border-color: var(--contrast);
+    box-shadow: 0 0 5px var(--contrast);
+}
+
+.review-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.review-form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estrelas de avaliação */
+.star-rating {
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 1.2rem;
+    color: var(--border);
+    transition: color 0.15s;
+}
+
+.star.filled {
+    color: var(--contrast);
+}
+
+.btn-publish {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s, opacity 0.2s;
+}
+
+.btn-publish:hover {
+    border-color: var(--contrast);
+    opacity: 0.9;
+}
+
+/* ---------- Seção "Sobre o jogo" ---------- */
+.about-text {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* ---------- Requisitos do sistema ---------- */
+.requirements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.requirements-block {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.requirements-block h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 14px;
+}
+
+.req-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.82rem;
+}
+
+.req-label {
+    color: var(--text-muted);
+    min-width: 90px;
+    flex-shrink: 0;
+}
+
+.req-value {
+    color: var(--text-main);
+}
+
+/* ---------- Jogos similares ---------- */
+.similar-games {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+.similar-game-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.similar-game-card:hover {
+    border-color: var(--contrast);
+    transform: translateY(-3px);
+}
+
+.similar-game-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+.similar-game-name {
+    position: relative;
+    z-index: 1;
+    background: rgba(8,9,11,0.55);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* ---------- Análises de outros usuários ---------- */
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.review-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.review-card-body {
+    flex: 1;
+}
+
+.review-card-text {
+    background-color: var(--bg-dark);
+    border-radius: 8px;
+    min-height: 70px;
+    padding: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.review-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewer-name {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    text-align: center;
+}
+
+.btn-see-all {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 30px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-see-all:hover {
+    border-color: var(--contrast);
+    color: var(--contrast);
+}
+/* ---------- Responsividade ---------- */
+@media (max-width: 900px) {
+    .game-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .game-sidebar {
+        order: -1; /* sidebar sobe para o topo em mobile */
+    }
+
+    .similar-games {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .requirements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-page {
+        padding: 0 16px 40px;
+    }
+
+    .breadcrumb {
+        padding: 10px 16px;
+    }
+
+    .similar-games {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .review-form {
+        flex-direction: column;
+    }
+
+    .user-avatar-lg {
+        width: 44px;
+        height: 44px;
+    }
+}
