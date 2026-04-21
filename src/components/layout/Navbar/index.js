@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './index.css';
 import iconCLT from '../../../assets/img/icon_clt.png';
@@ -69,12 +70,25 @@ function Navbar() {
         }
         return parts[0].substring(0, 2).toUpperCase();
     };
+=======
+import React from 'react';
+import './index.css';
+import iconCLT from '../../../assets/imgs/icon_clt.png';
+
+function Navbar() {
+
+    const isAdmin = true;
+>>>>>>> editUser
 
     return(
     <nav className='navbar'>
         <div className='navbar-container'>
             
+<<<<<<< HEAD
             <div className='navbar-logo'>
+=======
+            <div className='navbar-logo' >
+>>>>>>> editUser
                 <img src={iconCLT} alt="Icone CLT" />
                 <span>CLT</span> Gaming
             </div>
@@ -82,12 +96,18 @@ function Navbar() {
     
         {/*No primeiro momento, essa barra deve sumir em mobile*/}
             <div className='search-bar'>
+<<<<<<< HEAD
                 <input type='text' placeholder='Buscar jogos...'/>
                 <span className='search-icon'>{/*incluir icone*/}🔎</span>
+=======
+            <input type='text' placeholder='Buscar jogos...'/>
+            <span className='search-icon'>{/*incluir icone*/}🔎</span>
+>>>>>>> editUser
             </div>
 
         {/*Menu de navegação*/}
             <div className='navbar-menu'>
+<<<<<<< HEAD
                 <a href='#loja' className='navbar-item'>Loja</a>
                 <a href='#biblioteca' className='navbar-item'>Biblioteca</a>
                 <a href='#rankings' className='navbar-item'>Rankings</a>
@@ -141,6 +161,36 @@ function Navbar() {
                 )}
             </div>
         </nav>
+=======
+            <a href='#loja' className='navbar-item active'>Loja</a>
+            <a href='#biblioteca' className='navbar-item'>Biblioteca</a>
+            <a href='#rankings' className='navbar-item'>Rankings</a>
+            </div>
+
+            </div>
+
+            <div className='navbar-actions'>
+
+                {/*Deve ser exibido apenas para conta com privilégio ADM*/}
+                {isAdmin && (
+                <a href='#painel' className='navbar-item admin'>Painel ADM</a>
+                )}
+
+                <div className='action-icon notification'>
+                   🔔 <span className='badge-notification'>2</span>
+                </div>
+
+                <div className='action-icon cart'>
+                   🛒 <span className='badge-cart'>3</span>
+                </div>
+
+                <div className='user-profile'>
+                    <span className='user-avatar'>AR</span>
+                </div>
+            </div>
+    
+    </nav>
+>>>>>>> editUser
     );
 }
 

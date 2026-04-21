@@ -19,7 +19,11 @@ html, body {
     overflow-x: hidden; /*Evita scroll horizontal*/
     background-color: var(--bg-dark);
     color: var(--text-main);
+<<<<<<< HEAD
     font-family: 'Ubuntu', sans-serif;
+=======
+    font-family: "Ubuntu", sans-serif;
+>>>>>>> editUser
     -webkit-font-smoothing: alialiased;
 }
 
