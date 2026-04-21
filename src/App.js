@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* Conteudo aqui, apenas teste */}
+      {/* Conteudo aqui */}
       <EditUser />
     </div>
   );
