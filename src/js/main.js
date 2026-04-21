@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // LÓGICA DE LOGOUT
             logoutBtn.addEventListener('click', () => {
                 localStorage.removeItem('token'); // Apaga o token
+                localStorage.removeItem('cartCount'); //Apaga a contagem do carrinho
+                cartCount = 0;
+                updateCartBadge();
                 renderUserArea(); // Renderiza a área de novo (agora sem token)
             });
 
@@ -121,5 +124,49 @@ document.addEventListener('DOMContentLoaded', () => {
             let nextSlide = (currentSlide + 1) % mockGames.length;
             updateBanner(nextSlide);
         }, 4000); // Roda a cada 4 segundos
+    }
+
+    /*NUMERAÇÃO DO CARRINHO*/
+    
+    // 1. Mapeamos os elementos
+    const btnCart = document.querySelector('.btn-cart'); 
+    const badgeCart = document.querySelector('.badge-cart');
+
+    // 2. Buscamos se já existe algo no carrinho salvo no navegador
+    let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+
+    // 3. Função para atualizar a bolinha visual na Navbar
+    function updateCartBadge() {
+        if (badgeCart) {
+            badgeCart.textContent = cartCount;
+        }
+    }
+
+    // Chama a função logo que a página carrega para mostrar o número correto
+    updateCartBadge();
+
+    // 4. O evento de clique no botão do banner
+    if (btnCart && badgeCart) {
+        btnCart.addEventListener('click', () => {
+            // Incrementa o número
+            cartCount++; 
+            localStorage.setItem('cartCount', cartCount); 
+            updateCartBadge(); 
+
+            const textoOriginal = btnCart.textContent; 
+            
+            btnCart.textContent = '✓ Adicionado!';
+            btnCart.style.backgroundColor = '#28a745'; // Fundo verde
+            btnCart.style.color = '#fff';
+            btnCart.style.transform = 'scale(0.95)'; // Efeito de "aperto"
+
+            // lógica para o botão voltar ao normal
+            setTimeout(() => {
+                btnCart.textContent = textoOriginal;
+                btnCart.style.backgroundColor = ''; // Remove o estilo inline (volta pro CSS)
+                btnCart.style.color = '';
+                btnCart.style.transform = '';
+            }, 1500);
+        });
     }
 });
