@@ -121,7 +121,7 @@ function Navbar() {
                                 <div className='user-dropdown'>
                                     <div className='dropdown-header'>
                                         <p className='user-name'>{user?.nome}</p>
-                                        <p className='user-role'>{user?.perfil}</p>
+                                        {isAdmin && <p className='user-role'>{user?.perfil}</p>}
                                     </div>
                                     <div className='dropdown-divider'></div>
                                     <a href="#conta" className='dropdown-item'>Editar conta</a>
