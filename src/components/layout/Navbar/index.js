@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './index.css';
 import iconCLT from '../../../assets/img/icon_clt.png';
 
@@ -9,15 +9,29 @@ function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [user, setUser] = useState(null);
     const menuRef = useRef(null);
+    
+     // Recolhimento dos dados brutos e verificação de ADM
+    const processToken = useCallback((token) => {
+        try {
+            const payloadBase64 = token.split('.')[1];
+            const decodedPayload = JSON.parse(atob(payloadBase64));
+            
+            setUser({ nome: decodedPayload.nome, perfil: decodedPayload.perfil });
+            setIsLoggedIn(true);
+            setIsAdmin(decodedPayload.perfil === 'Administrador' || decodedPayload.perfil === 'Admin');
+        } catch (error) {
+            console.error("Erro ao ler o token", error);
+            handleLogout();
+        }
+    }, []);
 
     // Verifica se já existe um token ao carregar a página
-    
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
             processToken(token);
         }
-    }, []);
+    }, [processToken]);
 
     // Função que verifica clique para fechar o menu flutuante
     useEffect(() => {
@@ -34,20 +48,6 @@ function Navbar() {
         };
     }, [menuRef]);
 
-    // Recolhimento dos dados brutos e verificação de ADM
-    const processToken = (token) => {
-        try {
-            const payloadBase64 = token.split('.')[1];
-            const decodedPayload = JSON.parse(atob(payloadBase64));
-            
-            setUser({ nome: decodedPayload.nome, perfil: decodedPayload.perfil });
-            setIsLoggedIn(true);
-            setIsAdmin(decodedPayload.perfil === 'Administrador' || decodedPayload.perfil === 'Admin');
-        } catch (error) {
-            console.error("Erro ao ler o token", error);
-            handleLogout();
-        }
-    };
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -55,8 +55,9 @@ function Navbar() {
         setUser(null);
         setIsAdmin(false);
         setIsMenuOpen(false);
-        // adicionar redirecionamento para a página inicial
-        // window.location.href = '/'; 
+        
+        //implementar lógica utilizando useNavigate
+        window.location.href = '/';
     };
 
     //Recolher iniciais para inserir no avatar
