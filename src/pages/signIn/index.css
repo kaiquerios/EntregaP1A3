@@ -25,3 +25,20 @@
     margin-bottom: 30px;
     font-size: 1.8rem;
 }
+
+.logo-text {
+    color: #7d5fff; /*cor de destaque*/
+    font-weight: bold;
+}
+
+/*mensagem de erro*/
+.error-message {
+    background-color: rgba(255, 46, 46, 0.1);
+    color: #ff4e4e;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ff4e4e;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+}
