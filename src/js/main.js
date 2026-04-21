@@ -148,6 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. O evento de clique no botão do banner
     if (btnCart && badgeCart) {
         btnCart.addEventListener('click', () => {
+
+            const token = localStorage.getItem('token');
+
+            if (!token) {
+                window.location.href = 'login.html';
+                return; 
+            }
             // Incrementa o número
             cartCount++; 
             localStorage.setItem('cartCount', cartCount); 
