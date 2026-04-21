@@ -26,3 +26,7 @@
     font-size: 1.8rem;
 }
 
+.logo-text {
+    color: #7d5fff; {/*Cor de destaque*/}
+    font-weight: bold;
+}
