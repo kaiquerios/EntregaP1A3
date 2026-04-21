@@ -10,6 +10,7 @@ function Navbar() {
     const [user, setUser] = useState(null);
     const menuRef = useRef(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState('loja');
     
      // Recolhimento dos dados brutos e verificação de ADM
     const processToken = useCallback((token) => {
@@ -93,9 +94,17 @@ function Navbar() {
 
         {/*Menu de navegação*/}
             <div className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-                <a href='#loja' className='navbar-item' onClick={() => setIsMobileMenuOpen(false)}>Loja</a>
-                <a href='#biblioteca' className='navbar-item' onClick={() => setIsMobileMenuOpen(false)}>Biblioteca</a>
-                <a href='#rankings' className='navbar-item' onClick={() => setIsMobileMenuOpen(false)}>Rankings</a>
+                <a href='#loja' 
+                className={`navbar-item ${activeTab === 'loja' ? 'active' : ''}`} 
+                onClick={() => {setActiveTab('loja'); setIsMobileMenuOpen(false)}}>Loja</a>
+
+                <a href='#biblioteca' 
+                className={`navbar-item ${activeTab === 'biblioteca' ? 'active' : ''}`} 
+                onClick={() => {setActiveTab('biblioteca'); setIsMobileMenuOpen(false)}}>Biblioteca</a>
+
+                <a href='#rankings' 
+                className={`navbar-item ${activeTab === 'rankings' ? 'active' : ''}`} 
+                onClick={() => {setActiveTab('rankings'); setIsMobileMenuOpen(false)}}>Rankings</a>
             </div>
 
         </div>

@@ -100,6 +100,13 @@ gap: 40px;
     border: 1px solid var(--contrast);
 }
 
+/*item ativo*/
+.navbar-item.active {
+    color: var(--contrast); 
+    font-weight: 700; 
+    position: relative;
+}
+
 .navbar-actions {
     display: flex;
     align-items: center;
@@ -286,6 +293,17 @@ gap: 40px;
         width: 100%;
         text-align: center;
         font-size: 1.1rem;
+    }
+
+    .navbar-item.active::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--contrast);
+        border-radius: 2px;
     }
 
     .navbar-container {
