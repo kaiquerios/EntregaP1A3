@@ -11,7 +11,7 @@ function SignUp() {
         confirmEmail: '',
         password: '',
         confirmPassword: '',
-        genre: ''
+        genre: '',
     });
     
     const handleChange = (e) => {
@@ -39,7 +39,6 @@ function SignUp() {
                 formattedVal += '/' + val.substring(4, 8);
             }
         }
-
         setFormData(prev => ({ ...prev, birthDate: formattedVal.substring(0, 10)}));
     };
 
@@ -55,7 +54,7 @@ function SignUp() {
             return;
         }
 
-        const isoDate = '${dateParts[2]}-${dateParts[1]}-${dateParts[0]}';
+        const isoDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
 
         const dataParaEnviar = {
             ...formData, birthDate: isoDate
@@ -108,7 +107,7 @@ function SignUp() {
 
                     <div className="form-field">
                             <label>Data de Nascimento</label>
-                            <input type="text" name="birthDate" placeholder="DD/MM/AAAA" value={formData.birthDate} onChange={handleChange} maxLength="10" className="input-date" />
+                            <input type="text" name="birthDate" placeholder="DD/MM/AAAA" value={formData.birthDate} onChange={handleDateChange} maxLength="10" />
                         </div>
 
                     <div className="form-field">
@@ -121,7 +120,7 @@ function SignUp() {
 
                             <div className="form-field">
                                 <label>Confirmar E-mail</label>
-                                <input type="email" name="confirmEmal" required onChange={handleChange} />
+                                <input type="email" name="confirmEmail" required onChange={handleChange} />
 
                                 <div className="form-field">
                                     <label>Senha</label>
