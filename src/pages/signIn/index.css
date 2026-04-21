@@ -42,3 +42,25 @@
     font-size: 0.9rem;
     text-align: center;
 }
+
+/*grupos de input*/
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.form-group input {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #252525;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
