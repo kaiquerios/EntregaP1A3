@@ -20,10 +20,19 @@ flex: 1;
 }
 
 .navbar-logo {
+    display: flex;
+    align-items: center; /* centraliza verticalmente */
+    gap: 8px; /* espaço entre ícone e texto */
     font-size: 1.4rem; /*utilizado rem para melhor responsividade*/
     font-weight: 800;
     color: var(--text-main);
     letter-spacing: -1px;
+}
+
+.navbar-logo img {
+    width: 30px;
+    height: 30px;
+    display: block;
 }
 
 /*cor da sigla CLT*/
@@ -79,7 +88,7 @@ flex: 1;
     transition: 0.3s;
 }
 
-.navbar-item:hover, navbar-item.active{
+.navbar-item:hover{
     color: var(--contrast)
 }
 

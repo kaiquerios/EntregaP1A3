@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import iconCLT from '../../../assets/img/icon_clt.png';
 
 function Navbar() {
 
@@ -10,8 +11,8 @@ function Navbar() {
         <div className='navbar-container'>
             
             <div className='navbar-logo'>
-                {/*incluir icone*/}
-                💼 <span>CLT</span> Gaming
+                <img src={iconCLT} alt="Icone CLT" />
+                <span>CLT</span> Gaming
             </div>
             
     
@@ -23,7 +24,7 @@ function Navbar() {
 
         {/*Menu de navegação*/}
             <div className='navbar-menu'>
-            <a href='#loja' className='navbar-item active'>Loja</a>
+            <a href='#loja' className='navbar-item'>Loja</a>
             <a href='#biblioteca' className='navbar-item'>Biblioteca</a>
             <a href='#rankings' className='navbar-item'>Rankings</a>
             </div>
