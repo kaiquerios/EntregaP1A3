@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './index.css';
 
-function EditUser() {
+function EditUser({ onClose }) {
 
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
@@ -22,9 +22,9 @@ function EditUser() {
         {/* Cabeçalho */}
         <div className="edit-user-header">
           <h2 className="edit-user-title">Editar Perfil</h2>
-          <button className="edit-user-close">✕</button>
+          <button className="edit-user-close" onClick={onClose}>✕</button>
         </div>
-
+        
         {/* Foto de perfil */}
         <div className="edit-user-avatar-section">
           <div className="edit-user-avatar">AR</div>
@@ -147,8 +147,8 @@ function EditUser() {
 
         {/* Rodapé */}
         <div className="edit-user-footer">
-          <button className="edit-user-cancel-btn">Cancelar</button>
-          <button className="edit-user-save-btn">Salvar alterações</button>
+          <button className="edit-user-cancel-btn" onClick={onClose}>Cancelar</button>
+          <button className="edit-user-save-btn" onClick={onClose}>Salvar alterações</button>
         </div>
 
       </div>
