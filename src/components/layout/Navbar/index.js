@@ -148,8 +148,9 @@ function Navbar() {
                         </div>
                     </>
                 ) : (
-                    /* Agora é apenas um link/botão que redireciona para a página do seu colega */
-                    <a href="/login" className='btn-login' style={{ textDecoration: 'none' }}>
+                    
+                    
+                    <a href="/login" className='btn-login'>
                         Entrar
                     </a>
                 )}

@@ -162,6 +162,7 @@ gap: 40px;
     padding: 10px;
     border-radius: 8px;
     font-weight: bold;
+    text-decoration: none;
     cursor: pointer;
     margin-top: 5px;
     transition: 0.3s;
