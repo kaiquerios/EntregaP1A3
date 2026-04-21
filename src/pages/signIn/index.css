@@ -64,3 +64,9 @@
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
+
+/*efeito ao clicar no input*/
+.form-group input:focus {
+    outline: none;
+    border-color: #7d5fff;
+}
