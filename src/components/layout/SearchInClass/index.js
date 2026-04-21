@@ -31,12 +31,10 @@ function SearchInClass(){
                     'VR': '🥽'
                 };
 
-
             data.forEach(jogo => {
             // O .trim() remove o \r invisível e qualquer espaço extra (visto através do insomnia)
             const categoriaLimpa = jogo.categoria ? jogo.categoria.trim() : "";
 
-            
             if (!seen.has(categoriaLimpa) && iconMap[categoriaLimpa]) {
              seen.add(categoriaLimpa);
              uniqueCategories.push({
@@ -46,7 +44,7 @@ function SearchInClass(){
             });
         }
     });
-                setCategories(uniqueCategories);
+                setCategories(uniqueCategories.slice(0,6));
                 setLoading(false); 
 
             })
