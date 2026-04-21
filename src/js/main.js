@@ -1,52 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const isLogged = false; 
     const userArea = document.getElementById('user-area');
 
-    if (isLogged) {
-        userArea.innerHTML = `
-            <span class="user-avatar" id="avatar-btn">AR</span>
-            <div class="user-dropdown" id="user-dropdown">
-                <div class="dropdown-header">
-                    <p class="user-name">Alisson Rodrigo</p>
-                    <p class="user-role">Administrador</p>
+    // 1. Função dinâmica que verifica o login e atualiza a tela
+    function renderUserArea() {
+        // Verifica no navegador se o passaporte (token) existe
+        const token = localStorage.getItem('token'); 
+
+        if (token) {
+            // CONTEXTO: LOGADO
+            userArea.innerHTML = `
+                <span class="user-avatar" id="avatar-btn">AR</span>
+                <div class="user-dropdown" id="user-dropdown">
+                    <div class="dropdown-header">
+                        <p class="user-name">Alisson Rodrigo</p>
+                        <p class="user-role">Administrador</p>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a href="#conta" class="dropdown-item">Editar conta</a>
+                    <a href="#pagamento" class="dropdown-item">Métodos de pagamento</a>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item logout-btn" id="logout-btn">Finalizar sessão</button>
                 </div>
-                <div class="dropdown-divider"></div>
-                <a href="#conta" class="dropdown-item">Editar conta</a>
-                <a href="#pagamento" class="dropdown-item">Métodos de pagamento</a>
-                <div class="dropdown-divider"></div>
-                <button class="dropdown-item logout-btn">Finalizar sessão</button>
-            </div>
-        `;
+            `;
 
-        // Toggle do menu de usuário
-        const avatarBtn = document.getElementById('avatar-btn');
-        const userDropdown = document.getElementById('user-dropdown');
-        
-        avatarBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evita fechar imediatamente
-            userDropdown.classList.toggle('active');
-        });
+            const avatarBtn = document.getElementById('avatar-btn');
+            const userDropdown = document.getElementById('user-dropdown');
+            const logoutBtn = document.getElementById('logout-btn');
+            
+            // Toggle do menu de usuário
+            avatarBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita fechar imediatamente
+                userDropdown.classList.toggle('active');
+            });
 
-        // Fechar ao clicar fora
-        document.addEventListener('click', (e) => {
-            if (!userArea.contains(e.target)) {
-                userDropdown.classList.remove('active');
-            }
-        });
-    } else {
-        userArea.innerHTML = `<a href="#login" class="btn-login">Entrar</a>`;
+            // LÓGICA DE LOGOUT
+            logoutBtn.addEventListener('click', () => {
+                localStorage.removeItem('token'); // Apaga o token
+                renderUserArea(); // Renderiza a área de novo (agora sem token)
+            });
+
+        } else {
+            // CONTEXTO: DESLOGADO
+            userArea.innerHTML = `<a href="login.html" class="btn-login">Entrar</a>`;
+        }
     }
+
+    renderUserArea();
+
+    // Fechar ao clicar fora do menu de usuário (Global)
+    document.addEventListener('click', (e) => {
+        const userDropdown = document.getElementById('user-dropdown');
+        // Se o menu existir, estiver ativo e o clique for de fora, ele fecha
+        if (userDropdown && userDropdown.classList.contains('active') && !userArea.contains(e.target)) {
+            userDropdown.classList.remove('active');
+        }
+    });
 
     /*MENU MOBILE */
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const navbarMenu = document.getElementById('navbar-menu');
 
-    mobileBtn.addEventListener('click', () => {
-        navbarMenu.classList.toggle('active');
-        mobileBtn.textContent = navbarMenu.classList.contains('active') ? '✖' : '☰';
-    });
-
+    // Boa prática: Verificar se os elementos existem antes de adicionar o evento
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            mobileBtn.textContent = navbarMenu.classList.contains('active') ? '✖' : '☰';
+        });
+    }
 
     /* LÓGICA DO CARROSSEL*/
     const mockGames = [
@@ -64,40 +85,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const bannerPreco = document.getElementById('banner-preco');
     const dotsContainer = document.getElementById('banner-dots-container');
 
-    // Inicializa os pontos do carrossel
-    mockGames.forEach((_, index) => {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        if(index === 0) dot.classList.add('active');
-        
-        dot.addEventListener('click', () => updateBanner(index));
-        dotsContainer.appendChild(dot);
-    });
-
-    function updateBanner(index) {
-        currentSlide = index;
-        const game = mockGames[index];
-        
-        bannerTitulo.textContent = game.nome;
-        bannerEmpresa.textContent = game.empresa;
-        bannerCategoria.textContent = game.categoria;
-        bannerAno.textContent = game.ano;
-        bannerDescricao.textContent = game.descricao;
-        bannerPreco.textContent = `R$ ${game.preco}`;
-
-        // Atualiza as bolinhas (dots)
-        document.querySelectorAll('.dot').forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
+    // Inicializa os pontos do carrossel (Verificando se o container existe na página)
+    if (dotsContainer) {
+        mockGames.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if(index === 0) dot.classList.add('active');
+            
+            dot.addEventListener('click', () => updateBanner(index));
+            dotsContainer.appendChild(dot);
         });
+
+        function updateBanner(index) {
+            currentSlide = index;
+            const game = mockGames[index];
+            
+            bannerTitulo.textContent = game.nome;
+            bannerEmpresa.textContent = game.empresa;
+            bannerCategoria.textContent = game.categoria;
+            bannerAno.textContent = game.ano;
+            bannerDescricao.textContent = game.descricao;
+            bannerPreco.textContent = `R$ ${game.preco}`;
+
+            // Atualiza as bolinhas (dots)
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // Carrega o primeiro jogo
+        updateBanner(0);
+
+        // Carrossel Automático
+        setInterval(() => {
+            let nextSlide = (currentSlide + 1) % mockGames.length;
+            updateBanner(nextSlide);
+        }, 4000); // Roda a cada 4 segundos
     }
-
-    // Carrega o primeiro jogo
-    updateBanner(0);
-
-    // Carrossel Automático
-    setInterval(() => {
-        let nextSlide = (currentSlide + 1) % mockGames.length;
-        updateBanner(nextSlide);
-    }, 4000); // Roda a cada 4 segundos
-
 });
