@@ -98,7 +98,6 @@ function SignUp() {
                             <label>Nome</label>
                             <input type="text" name="firstName" placeholder="Ex: Chris" onChange={handleChange} />
                         </div>
-
                         <div className="form-field">
                             <label>Sobrenome</label>
                             <input type="text" name="lastName" placeholder="Ex: Redfield" onChange={handleChange} />
@@ -106,41 +105,49 @@ function SignUp() {
                     </div>
 
                     <div className="form-field">
-                            <label>Data de Nascimento</label>
-                            <input type="text" name="birthDate" placeholder="DD/MM/AAAA" value={formData.birthDate} onChange={handleDateChange} maxLength="10" />
-                        </div>
+                        <label>Data de Nascimento</label>
+                        <input 
+                            type="text" 
+                            name="birthDate" 
+                            placeholder="DD/MM/AAAA" 
+                            value={formData.birthDate} 
+                            onChange={handleDateChange} 
+                            maxLength="10" 
+                        />
+                    </div>
 
                     <div className="form-field">
                         <label>Nickname</label>
                         <input type="text" name="username" required onChange={handleChange} />
-
-                        <div className="form-field">
-                            <label>E-mail</label>
-                            <input type="email" name="email" required onChange={handleChange} />
-
-                            <div className="form-field">
-                                <label>Confirmar E-mail</label>
-                                <input type="email" name="confirmEmail" required onChange={handleChange} />
-
-                                <div className="form-field">
-                                    <label>Senha</label>
-                                    <input type="password" name="password" required onChange={handleChange} />
-
-                                    <div className="form-field">
-                                        <label>Confirmar Senha</label>
-                                        <input type="password" name="confirmPassword" required onChange={handleChange} />
-
-                                        <button type="submit" className="btn-primary" disabled={isFormInvalid}>Finalizar Cadastro</button>
-
-                                    </div>
-                                </div>   
-                            </div>
-                        </div>
                     </div>
+
+                    <div className="form-field">
+                        <label>E-mail</label>
+                        <input type="email" name="email" required onChange={handleChange} />
+                    </div>
+
+                    <div className="form-field">
+                        <label>Confirmar E-mail</label>
+                        <input type="email" name="confirmEmail" required onChange={handleChange} />
+                    </div>
+
+                    <div className="form-field">
+                        <label>Senha</label>
+                        <input type="password" name="password" required onChange={handleChange} />
+                    </div>
+
+                    <div className="form-field">
+                        <label>Confirmar Senha</label>
+                        <input type="password" name="confirmPassword" required onChange={handleChange} />
+                    </div>
+
+                    <button type="submit" className="btn-primary" disabled={isFormInvalid}>
+                        Finalizar Cadastro
+                    </button>
                 </form>
             </div>
         </div>
-    )    
+    );    
     
 }
 
