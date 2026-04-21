@@ -92,7 +92,7 @@ function Navbar() {
                 <span className='search-icon'>{/*incluir icone*/}🔎</span>
             </div>
 
-        {/*Menu de navegação*/}
+        {/*Menu de navegação lateral*/}
             <div className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
                 <a href='#loja' 
                 className={`navbar-item ${activeTab === 'loja' ? 'active' : ''}`} 
@@ -132,6 +132,7 @@ function Navbar() {
                                 {getInitials(user?.nome)}
                             </span>
                             
+                            {/* Menu flutuante */}
                             {isMenuOpen && (
                                 <div className='user-dropdown'>
                                     <div className='dropdown-header'>
