@@ -45,7 +45,7 @@ flex: 1;
     display: flex;
     align-items: center;
     background-color: var(--bg-dark);
-    border: 1px solid var (--border);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 8px 15px;
     width: 100%;
@@ -124,13 +124,13 @@ flex: 1;
     position: absolute;
     top: -5px;
     right: -10px;
-    background-color: var (--contrast);
+    background-color: var(--contrast);
     color: var (--bg-dark);
     font-size: 0.75rem;
     font-weight: 700;
     padding: 2px 6px;
     border-radius: 10px;
-    border: 2px solid var (--bg-card);
+    border: 2px solid var(--bg-card);
 }
 
 .user-avatar{
