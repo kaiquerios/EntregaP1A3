@@ -146,3 +146,7 @@
     filter: invert (1);
     cursor: pointer;
 }
+
+.form-field-compact {
+    max-width: 150px;
+}

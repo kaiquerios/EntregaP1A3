@@ -113,7 +113,7 @@ function SignUp() {
                         </div>
                     </div>
 
-                    <div className="form-field">
+                    <div className="form-field form-field-compact">
                         <label>Data de Nascimento</label>
                         <input 
                             type="text" 
