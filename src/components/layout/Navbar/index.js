@@ -103,11 +103,11 @@ function Navbar() {
                         )}
 
                         <div className='action-icon notification'>
-                           🔔 <span className='badge-notification'>2</span>
+                           🔔 <span className='badge-notification'>0</span>
                         </div>
 
                         <div className='action-icon cart'>
-                           🛒 <span className='badge-cart'>3</span>
+                           🛒 <span className='badge-cart'>0</span>
                         </div>
 
                         <div className='user-profile' ref={menuRef}>
