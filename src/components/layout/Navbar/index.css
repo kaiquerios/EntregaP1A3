@@ -247,22 +247,21 @@ gap: 40px;
 /*Responsividade mobile*/
 @media (max-width: 768px){
     .mobile-menu-icon {
-        display: block; /* Revela o sanduíche */
-        order: -1; /* Garante que ele fique antes do logo se necessário */
+        display: block; 
+        order: -1; 
     }
 
     .navbar-logo img, .navbar-item.admin {
         display: none;
     }
 
-    /* 1. Ajuste da Busca: Agora ela aparece, mas menor */
     .search-bar {
         display: flex;
-        max-width: 150px; /* Reduz o tamanho para caber no iPhone */
+        max-width: 150px; 
         padding: 5px 10px;
     }
 
-    /* 2. Transformação do Menu em Sanduíche (Gaveta) */
+   
     .navbar-menu {
         position: fixed;
         left: -100%; /* Escondido fora da tela */
