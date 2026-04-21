@@ -16,4 +16,12 @@ function SignIn() {
             setError('Por favor, preencha todos os campos.');
             return;
         }
+        // aqui entraria a lógica de integração com o Backend (API)
+        console.log('Tentando login com:', { email, password });
+        
+        setError(''); // Limpa erros se tudo estiver ok
+        alert('Login realizado com sucesso! (Simulação)');
+    };
+}
+
 export default SignIn;
