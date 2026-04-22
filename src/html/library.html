@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLT Gaming - Lista de Desejos</title>
+    <title>CLT Gaming - Minha Biblioteca</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
     
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/wishList.css">
+    <link rel="stylesheet" href="../css/library.css">
 </head>
 <body>
 
@@ -19,18 +19,16 @@
         <div class="navbar-container">
             <div class="mobile-menu-icon" id="mobile-menu-btn">☰</div>
             <div class="navbar-logo">
-                <a href="/src/html/home.html"" class="logo-icon">
                 <img src="../assets/img/icon_clt.png" alt="Icone">
-                </a>
                 <span>CLT</span> Gaming
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Buscar jogos...">
+                <input type="text" placeholder="Buscar na biblioteca...">
                 <span class="search-icon">🔎</span>
             </div>
             <div class="navbar-menu" id="navbar-menu">
                 <a href="home.html" class="navbar-item">Loja</a>
-                <a href="library.html" class="navbar-item">Biblioteca</a>
+                <a href="#biblioteca" class="navbar-item active">Biblioteca</a>
                 <a href="#rankings" class="navbar-item">Rankings</a>
             </div>
         </div>
@@ -41,32 +39,34 @@
             <div class="action-icon cart" id="nav-cart">
                 🛒 <span class="badge-cart">0</span>
             </div>
-            <div id="user-area" class="user-profile">
-                </div>
+            <div id="user-area" class="user-profile"></div>
         </div>
     </nav>
 
-    <main class="wishlist-container">
-    <header class="wishlist-header">
-        <h1 class="wishlist-title">Minha Lista de Desejos</h1>
-        <p class="wishlist-description">Aqui estão os jogos que você salvou para comprar depois.</p>
-    </header>
+    <main class="library-container">
+        <header class="library-header">
+            <h1 class="library-title">Minha Biblioteca</h1>
+            <p class="library-description">Gerencie sua coleção de jogos e inicie sua próxima aventura.</p>
+        </header>
 
-    <div class="wishlist-grid" id="wishlist-grid">
-        </div>
-</main>
+        <div class="library-grid" id="library-grid">
+            </div>
+    </main>
 
     <footer class="footer-container">
         <div class="footer-content">
             <div class="footer-brand">
                 <h2 class="footer-logo">CLT <span>Gaming</span></h2>
-                <p class="footer-description">Sua loja definitiva para aquela boa jogatina após um dia cansativo.</p>
+                <p class="footer-description">
+                    Sua loja definitiva para aquela boa jogatina após um dia cansativo.
+                </p>
             </div>
             <div class="footer-links">
                 <h3>Links Rápidos</h3>
                 <ul>
                     <li><a href="#lancamentos">Lançamentos</a></li>
                     <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#assinatura">Assinatura</a></li>
                     <li><a href="#suporte">Suporte</a></li>
                 </ul>
             </div>
@@ -74,17 +74,24 @@
                 <h3>Institucional</h3>
                 <ul>
                     <li><a href="#sobre">Sobre nós</a></li>
-                    <li><a href="#privacidade">Privacidade</a></li>
+                    <li><a href="#termos">Termos de serviço</a></li>
+                    <li><a href="#privacidade">Política de privacidade</a></li>
+                    <li><a href="#reembolso">Política de reembolso</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 CLT Gaming. Todos os direitos reservados.</p>
+            <div class="footer-socials">
+                <span class="social-icon">X</span>
+                <span class="social-icon">IG</span>
+                <span class="social-icon">DC</span>
+            </div>
         </div>
     </footer>
 
     <script src="../js/db.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/wishList.js"></script>
+    <script src="../js/library.js"></script>
 </body>
 </html>
