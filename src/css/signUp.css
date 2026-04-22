@@ -97,4 +97,13 @@ body {
     cursor: pointer;
     text-transform: uppercase;
     margin-top: 10px;
+    transition: all 0.3s ease;
 }
+
+.btn-primary:disabled {
+    background-color: var(--border); 
+    color: var(--text-muted);       
+    opacity: 0.5;                   
+    cursor: not-allowed;            
+    transform: none;
+}                
