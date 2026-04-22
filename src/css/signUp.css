@@ -1,0 +1,100 @@
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-card: #141414;
+    --contrast: #00ff88;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --border: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+}
+
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h2 span {
+    color: var(--contrast);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+}
+
+.form-field-compact {
+    max-width: 160px; 
+}
+
+.form-field label {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    color: var(--text-muted);
+}
+
+.form-field input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 6px;
+    color: white;
+    outline: none;
+}
+
+.form-field input:focus {
+    border-color: var(--contrast);
+}
+
+.btn-primary {
+    background: var(--contrast);
+    color: var(--bg-dark);
+    border: none;
+    padding: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
