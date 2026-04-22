@@ -1,27 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
-<<<<<<< HEAD
-import HomePage from './pages/home/index';
-
-=======
 import Navbar from './components/layout/Navbar/index';
-import EditUser from './components/layout/ModalEditUser/index';
->>>>>>> editUser
+import ModalEditUser from './components/layout/ModalEditUser/index';
 
 function App() {
-  const [showEditUser, setShowEditUser] = useState(true);
-  
+
+  const [showEditUser, setShowEditUser] = useState(false);
+
   return (
     <div className="App">
-<<<<<<< HEAD
-      <HomePage/>
-=======
-      <Navbar />
-      {/* Conteudo aqui */}
+      <Navbar onEditUser={() => setShowEditUser(true)} />
+
       {showEditUser && (
-        <EditUser onClose={() => setShowEditUser(false)} />
+        <ModalEditUser onClose={() => setShowEditUser(false)} />
       )}
->>>>>>> editUser
+
     </div>
   );
 }

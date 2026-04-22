@@ -16,59 +16,36 @@
 display: flex;
 align-items: center;
 gap: 40px;
-<<<<<<< HEAD
-/* flex: 1; */
-=======
 flex: 1;
->>>>>>> editUser
 }
 
 .navbar-logo {
     display: flex;
     align-items: center; /* centraliza verticalmente */
     gap: 8px; /* espaço entre ícone e texto */
-<<<<<<< HEAD
     font-size: 1.4rem; /*utilizado rem para melhor responsividade*/
-=======
-    font-size: 1.4rem;
->>>>>>> editUser
     font-weight: 800;
     color: var(--text-main);
     letter-spacing: -1px;
 }
 
-<<<<<<< HEAD
-=======
-/*cor da sigla CLT*/
-.navbar-logo span {
-    color: var(--contrast);
-}
-
->>>>>>> editUser
 .navbar-logo img {
     width: 30px;
     height: 30px;
     display: block;
 }
 
-<<<<<<< HEAD
 /*cor da sigla CLT*/
 .navbar-logo span {
     color: var(--contrast);
 }
 
-=======
->>>>>>> editUser
 /*background do input de busca*/
 .search-bar {
     display: flex;
     align-items: center;
     background-color: var(--bg-dark);
-<<<<<<< HEAD
     border: 1px solid var(--border);
-=======
-    border: 1px solid var (--border);
->>>>>>> editUser
     border-radius: 8px;
     padding: 8px 15px;
     width: 100%;
@@ -76,10 +53,6 @@ flex: 1;
     transition: border-color 0.3s;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> editUser
 /*configuração "padrão" para input de busca*/
 .search-bar input {
     background: transparent;
@@ -95,10 +68,6 @@ flex: 1;
     box-shadow: 0 0 5px var(--contrast);  
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> editUser
 .search-icon {
   cursor: pointer;
   font-size: 0.9rem; /*caso utilizar imagem ao invés de emoji, remover*/
@@ -117,21 +86,13 @@ flex: 1;
     transition: 0.3s;
 }
 
-<<<<<<< HEAD
 .navbar-item:hover{
-=======
-.navbar-item:hover, navbar-item.active{
->>>>>>> editUser
     color: var(--contrast)
 }
 
 /*botão painel adm*/
 .navbar-item.admin {
-<<<<<<< HEAD
     background: var(--bg-dark);
-=======
-    background: rgba(198,168,75, 0.1);
->>>>>>> editUser
     padding: 4px 10px;
     border-radius: 4px;
     border: 1px solid var(--contrast);
@@ -154,32 +115,20 @@ flex: 1;
 }
 
 .action-icon:hover, .user-avatar:hover {
-<<<<<<< HEAD
     filter: drop-shadow(0px 4px 6px var(--contrast))
-=======
-    filter: drop-shadow(0px 4px 6px rgba(255, 196, 17, 0.962))
->>>>>>> editUser
 }
 
 .badge-notification, .badge-cart {
     position: absolute;
     top: -5px;
     right: -10px;
-<<<<<<< HEAD
     background-color: var(--contrast);
-=======
-    background-color: var (--contrast);
->>>>>>> editUser
     color: var (--bg-dark);
     font-size: 0.75rem;
     font-weight: 700;
     padding: 2px 6px;
     border-radius: 10px;
-<<<<<<< HEAD
     border: 2px solid var(--bg-card);
-=======
-    border: 2px solid var (--bg-card);
->>>>>>> editUser
 }
 
 .user-avatar{
@@ -197,7 +146,6 @@ flex: 1;
     cursor: pointer;
 }
 
-<<<<<<< HEAD
 .btn-login {
     background-color: var(--contrast);
     color: var(--bg-dark);
@@ -290,38 +238,21 @@ flex: 1;
 /*Responsividade mobile*/
 @media (max-width: 768px){
     .search-bar, .navbar-item.admin, .navbar-logo img{
-=======
-/*Responsividade mobile*/
-@media (max-width: 768px){
-    .search-bar, .navbar-item.admin{
->>>>>>> editUser
         display: none;
     } 
 
     .navbar-container{
-<<<<<<< HEAD
     gap: 20px;
-=======
-    gap: 10px;
->>>>>>> editUser
     }   
 
     .navbar-logo {
     font-size: 1.0rem; /*utilizado rem para melhor responsividade*/
-<<<<<<< HEAD
     font-weight: 800;   
     gap: 5px; 
     }
 
     .navbar-menu{
         gap: 10px;
-=======
-    font-weight: 800;    
-    }
-
-    .navbar-menu{
-        gap: 15px;
->>>>>>> editUser
     }
 
     .navbar-item{
@@ -331,11 +262,8 @@ flex: 1;
     .navbar{
         padding: 0 10px; 
     }
-<<<<<<< HEAD
 
     .navbar-actions{
         gap: 12px;
     }
-=======
->>>>>>> editUser
 }

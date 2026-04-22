@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
+import { getUser, updateUser, changePassword } from "../../../services/api";
 
-function EditUser({ onClose }) {
+function ModalEditUser({ onClose }) {
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [showUsername, setShowUsername] = useState(false);
   const [currentPassword, setCurrentPassword] = useState("");
@@ -11,25 +14,79 @@ function EditUser({ onClose }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const email = "usuario@email.com";
+  // Trava o scroll da página quando o modal abre
+  useEffect(() => {
+    document.body.classList.add('modal-open');
+
+    // Remove a trava quando o modal fecha
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
+  }, []);
+
+  // Busca os dados do usuário assim que o modal abre
+  useEffect(() => {
+    async function buscarUsuario() {
+      try {
+        // Pega o ID do usuário a partir do token salvo no navegador
+        const token = localStorage.getItem('token');
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const userId = payload.id;
+
+        const data = await getUser(userId);
+
+        // Separa o nome completo em nome e sobrenome
+        const partes = data.nome ? data.nome.split(' ') : ['', ''];
+        setFirstName(partes[0] || '');
+        setLastName(partes.slice(1).join(' ') || '');
+        setEmail(data.email || '');
+
+      } catch (error) {
+        console.error('Erro ao buscar usuário:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    buscarUsuario();
+  }, []);
+
+  function handleSalvar() {
+    setSavedSuccess(true);
+    setTimeout(() => setSavedSuccess(false), 3000);
+  }
+
+  // Enquanto carrega, mostra mensagem de carregamento
+  if (loading) {
+    return (
+      <div className="edit-user-overlay">
+        <div className="edit-user-container">
+          <p style={{ color: 'var(--text-muted)', textAlign: 'center' }}>Carregando...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="edit-user-overlay">
       <div className="edit-user-container">
 
-        {/* Header */}
+        {/* Cabeçalho */}
         <div className="edit-user-header">
           <h2 className="edit-user-title">Editar Perfil</h2>
           <button className="edit-user-close" onClick={onClose}>✕</button>
         </div>
 
-        {/* Avatar */}
+        {/* Avatar — exibe as iniciais do usuário */}
         <div className="edit-user-avatar-section">
-          <div className="edit-user-avatar">AR</div>
+          <div className="edit-user-avatar">
+            {firstName.charAt(0)}{lastName.charAt(0)}
+          </div>
         </div>
 
-        {/* Email */}
+        {/* Email — somente leitura */}
         <div className="edit-user-field edit-user-email-field">
           <label className="edit-user-label">Email</label>
           <input
@@ -41,10 +98,10 @@ function EditUser({ onClose }) {
           <span className="edit-user-hint">O email não pode ser alterado.</span>
         </div>
 
-        {/* Two columns layout */}
+        {/* Layout de duas colunas */}
         <div className="edit-user-columns">
 
-          {/* Left column */}
+          {/* Coluna esquerda — Nome e alterar usuário */}
           <div className="edit-user-col">
 
             <div className="edit-user-field">
@@ -83,7 +140,7 @@ function EditUser({ onClose }) {
 
           </div>
 
-          {/* Right column */}
+          {/* Coluna direita — Sobrenome e alterar senha */}
           <div className="edit-user-col">
 
             <div className="edit-user-field">
@@ -143,7 +200,7 @@ function EditUser({ onClose }) {
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Rodapé — botões de ação */}
         <div className="edit-user-footer">
           {savedSuccess && (
             <span className="edit-user-success">
@@ -153,13 +210,7 @@ function EditUser({ onClose }) {
           <button className="edit-user-cancel-btn" onClick={onClose}>
             Cancelar
           </button>
-          <button
-            className="edit-user-save-btn"
-            onClick={() => {
-              setSavedSuccess(true);
-              setTimeout(() => setSavedSuccess(false), 3000);
-            }}
-          >
+          <button className="edit-user-save-btn" onClick={handleSalvar}>
             Salvar alterações
           </button>
         </div>
@@ -169,4 +220,4 @@ function EditUser({ onClose }) {
   );
 }
 
-export default EditUser;
+export default ModalEditUser;

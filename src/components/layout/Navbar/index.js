@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './index.css';
 import iconCLT from '../../../assets/img/icon_clt.png';
 
-function Navbar() {
+function Navbar({ onEditUser }) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
@@ -11,7 +10,6 @@ function Navbar() {
     const [user, setUser] = useState(null);
     const menuRef = useRef(null);
     
-     // Recolhimento dos dados brutos e verificação de ADM
     const processToken = useCallback((token) => {
         try {
             const payloadBase64 = token.split('.')[1];
@@ -26,7 +24,6 @@ function Navbar() {
         }
     }, []);
 
-    // Verifica se já existe um token ao carregar a página
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -34,21 +31,17 @@ function Navbar() {
         }
     }, [processToken]);
 
-    // Função que verifica clique para fechar o menu flutuante
     useEffect(() => {
-        
         function handleClickOutside(event) {
             if (menuRef.current && !menuRef.current.contains(event.target)) {
                 setIsMenuOpen(false);
             }
         }
-
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [menuRef]);
-
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -56,12 +49,9 @@ function Navbar() {
         setUser(null);
         setIsAdmin(false);
         setIsMenuOpen(false);
-        
-        //implementar lógica utilizando useNavigate
         window.location.href = '/';
     };
 
-    //Recolher iniciais para inserir no avatar
     const getInitials = (fullName) => {
         if (!fullName) return "";
         const parts = fullName.trim().split(' ');
@@ -70,44 +60,22 @@ function Navbar() {
         }
         return parts[0].substring(0, 2).toUpperCase();
     };
-=======
-import React from 'react';
-import './index.css';
-import iconCLT from '../../../assets/imgs/icon_clt.png';
-
-function Navbar() {
-
-    const isAdmin = true;
->>>>>>> editUser
 
     return(
     <nav className='navbar'>
         <div className='navbar-container'>
             
-<<<<<<< HEAD
             <div className='navbar-logo'>
-=======
-            <div className='navbar-logo' >
->>>>>>> editUser
                 <img src={iconCLT} alt="Icone CLT" />
                 <span>CLT</span> Gaming
             </div>
-            
-    
-        {/*No primeiro momento, essa barra deve sumir em mobile*/}
+
             <div className='search-bar'>
-<<<<<<< HEAD
                 <input type='text' placeholder='Buscar jogos...'/>
-                <span className='search-icon'>{/*incluir icone*/}🔎</span>
-=======
-            <input type='text' placeholder='Buscar jogos...'/>
-            <span className='search-icon'>{/*incluir icone*/}🔎</span>
->>>>>>> editUser
+                <span className='search-icon'>🔎</span>
             </div>
 
-        {/*Menu de navegação*/}
             <div className='navbar-menu'>
-<<<<<<< HEAD
                 <a href='#loja' className='navbar-item'>Loja</a>
                 <a href='#biblioteca' className='navbar-item'>Biblioteca</a>
                 <a href='#rankings' className='navbar-item'>Rankings</a>
@@ -115,82 +83,62 @@ function Navbar() {
 
         </div>
 
-            <div className='navbar-actions'>
-                {isLoggedIn ? (
-                    <>
-                        {isAdmin && (
-                            <a href='#painel' className='navbar-item admin'>Painel ADM</a>
-                        )}
+        <div className='navbar-actions'>
+            {isLoggedIn ? (
+                <>
+                    {isAdmin && (
+                        <a href='#painel' className='navbar-item admin'>Painel ADM</a>
+                    )}
 
-                        <div className='action-icon notification'>
-                           🔔 <span className='badge-notification'>0</span>
-                        </div>
+                    <div className='action-icon notification'>
+                       🔔 <span className='badge-notification'>0</span>
+                    </div>
 
-                        <div className='action-icon cart'>
-                           🛒 <span className='badge-cart'>0</span>
-                        </div>
+                    <div className='action-icon cart'>
+                       🛒 <span className='badge-cart'>0</span>
+                    </div>
 
-                        <div className='user-profile' ref={menuRef}>
-                            <span 
-                                className='user-avatar' 
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            >
-                                {getInitials(user?.nome)}
-                            </span>
-                            
-                            {isMenuOpen && (
-                                <div className='user-dropdown'>
-                                    <div className='dropdown-header'>
-                                        <p className='user-name'>{user?.nome}</p>
-                                        {isAdmin && <p className='user-role'>{user?.perfil}</p>}
-                                    </div>
-                                    <div className='dropdown-divider'></div>
-                                    <a href="#conta" className='dropdown-item'>Editar conta</a>
-                                    <a href="#pagamento" className='dropdown-item'>Métodos de pagamento</a>
-                                    <div className='dropdown-divider'></div>
-                                    <button onClick={handleLogout} className='dropdown-item logout-btn'>Finalizar sessão</button>
+                    <div className='user-profile' ref={menuRef}>
+                        <span 
+                            className='user-avatar' 
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        >
+                            {getInitials(user?.nome)}
+                        </span>
+                        
+                        {isMenuOpen && (
+                            <div className='user-dropdown'>
+                                <div className='dropdown-header'>
+                                    <p className='user-name'>{user?.nome}</p>
+                                    {isAdmin && <p className='user-role'>{user?.perfil}</p>}
                                 </div>
-                            )}
-                        </div>
-                    </>
-                ) : (
-                    /* Agora é apenas um link/botão que redireciona para a página do seu colega */
-                    <a href="/login" className='btn-login' style={{ textDecoration: 'none' }}>
-                        Entrar
-                    </a>
-                )}
-            </div>
-        </nav>
-=======
-            <a href='#loja' className='navbar-item active'>Loja</a>
-            <a href='#biblioteca' className='navbar-item'>Biblioteca</a>
-            <a href='#rankings' className='navbar-item'>Rankings</a>
-            </div>
+                                <div className='dropdown-divider'></div>
 
-            </div>
+                                {/* Abre o modal de editar perfil */}
+                                <button
+                                    className='dropdown-item'
+                                    onClick={() => {
+                                        setIsMenuOpen(false);
+                                        onEditUser();
+                                    }}
+                                >
+                                    Editar conta
+                                </button>
 
-            <div className='navbar-actions'>
-
-                {/*Deve ser exibido apenas para conta com privilégio ADM*/}
-                {isAdmin && (
-                <a href='#painel' className='navbar-item admin'>Painel ADM</a>
-                )}
-
-                <div className='action-icon notification'>
-                   🔔 <span className='badge-notification'>2</span>
-                </div>
-
-                <div className='action-icon cart'>
-                   🛒 <span className='badge-cart'>3</span>
-                </div>
-
-                <div className='user-profile'>
-                    <span className='user-avatar'>AR</span>
-                </div>
-            </div>
-    
+                                <a href="#pagamento" className='dropdown-item'>Métodos de pagamento</a>
+                                <div className='dropdown-divider'></div>
+                                <button onClick={handleLogout} className='dropdown-item logout-btn'>Finalizar sessão</button>
+                            </div>
+                        )}
+                    </div>
+                </>
+            ) : (
+                <a href="/login" className='btn-login' style={{ textDecoration: 'none' }}>
+                    Entrar
+                </a>
+            )}
+        </div>
     </nav>
->>>>>>> editUser
     );
 }
 
