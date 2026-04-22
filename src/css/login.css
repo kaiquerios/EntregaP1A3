@@ -1,0 +1,112 @@
+/* Container ocupa a tela toda */
+.signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    padding: 20px;
+    background-color: var(--bg-dark); 
+}
+
+/* Caixa do formulário */
+.signin-form {
+    background-color: var(--bg-card);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    color: var(--text-main);
+}
+
+.signin-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.logo-text {
+    color: var(--contrast); /* Usa a cor de destaque global */
+    font-weight: bold;
+}
+
+/* Mensagem de erro */
+.error-message {
+    background-color: rgba(255, 46, 46, 0.1);
+    color: #ff4e4e;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ff4e4e;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Grupos de input */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.form-group input {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--contrast);
+}
+
+/* Botão de entrar */
+.btn-signin {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--contrast);
+    color: var(--bg-dark); /* Texto escuro para dar leitura no botão colorido */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: filter 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
+}
+
+.btn-signin:hover {
+    filter: brightness(1.1); /* Substitui a cor fixa de hover por um brilho genérico */
+}
+
+.btn-signin:active {
+    transform: scale(0.98);
+}
+
+/* Rodapé do formulário */
+.signin-footer {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.signin-footer a {
+    color: var(--contrast);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signin-footer a:hover {
+    text-decoration: underline;
+}
