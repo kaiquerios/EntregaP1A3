@@ -19,17 +19,6 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#btn-abrir {
-  margin: 20px;
-  padding: 10px 20px;
-  background: var(--contrast);
-  color: var(--bg-dark);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 700;
-}
-
 body.modal-open {
   overflow: hidden;
 }
