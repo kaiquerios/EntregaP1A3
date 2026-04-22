@@ -64,10 +64,6 @@ body {
     flex: 1; 
 }
 
-.form-field-compact {
-    max-width: 160px; 
-}
-
 .form-field label {
     font-size: 0.85rem;
     margin-bottom: 5px;

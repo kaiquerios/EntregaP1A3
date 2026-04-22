@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta - Launcher</title>
-    <link rel="stylesheet" href="/EntregaP1A3/src/css/signUp.css">
+    <link rel="stylesheet" href="/src/css/signUp.css">
 </head>
 <body>
     <div class="auth-wrapper">
@@ -26,9 +26,15 @@
                     </div>
                 </div>
 
-                <div class="form-field">
-                    <label for="username">Nickname</label>
-                    <input type="text" id="username" name="username" required>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="username">Nickname</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="birthDate">Data de Nascimento</label>
+                        <input type="text" id="birthDate" name="birthDate" placeholder="DD/MM/AAAA" maxlength="10" required>
+                    </div>
                 </div>
 
                 <div class="form-row">
@@ -54,15 +60,10 @@
                     </div>
                 </div>
 
-                <div class="form-field form-field-compact">
-                    <label for="birthDate">Data de Nascimento</label>
-                    <input type="text" id="birthDate" name="birthDate" placeholder="DD/MM/AAAA" maxlength="10" required>
-                </div>
-
                 <button type="submit" id="btnSubmit" class="btn-primary" disabled>Finalizar Cadastro</button>
             </form>
         </div>
     </div>
-    <script src="/EntregaP1A3/src/js/signUp.js"></script>
+    <script src="/src/js/signUp.js"></script>
 </body>
 </html>
