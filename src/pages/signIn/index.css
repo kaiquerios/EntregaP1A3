@@ -1,4 +1,4 @@
-{/*container que sinaliza tudo na tela*/}
+/*container que sinaliza tudo na tela*/
 .signin-container {
     display: flex;
     justify-content: center;
@@ -8,7 +8,7 @@
     background-color: #0f0f0f; /* Fundo escuro padrão gaming */
 }
 
-/* Caixa do formulário */
+/*caixa do formulário*/
 .signin-form {
     background-color: #1a1a1a;
     padding: 40px;
@@ -19,7 +19,7 @@
     color: #ffffff;
 }
 
-{/*Título e Logo*/}
+/*título e Logo*/
 .signin-form h2 {
     text-align: center;
     margin-bottom: 30px;
@@ -27,11 +27,11 @@
 }
 
 .logo-text {
-    color: #7d5fff; {/*Cor de destaque*/}
+    color: #7d5fff; /*cor de destaque*/
     font-weight: bold;
 }
 
-{/*Mensagem de erro*/}
+/*mensagem de erro*/
 .error-message {
     background-color: rgba(255, 46, 46, 0.1);
     color: #ff4e4e;
@@ -43,7 +43,7 @@
     text-align: center;
 }
 
-{/*Grupos de input*/}
+/*grupos de input*/
 .form-group {
     margin-bottom: 20px;
     display: flex;
@@ -65,13 +65,13 @@
     transition: border-color 0.3s ease;
 }
 
-{/*Efeito ao clicar no input*/}
+/*efeito ao clicar no input*/
 .form-group input:focus {
     outline: none;
     border-color: #7d5fff;
 }
 
-{/*Botão de entrar*/}
+/*Botão de entrar*/
 .btn-signin {
     width: 100%;
     padding: 14px;
@@ -94,7 +94,7 @@
     transform: scale(0.98);
 }
 
-{/*Rodapé do formulário*/}
+/*Rodapé do formulário*/
 .signin-footer {
     margin-top: 25px;
     text-align: center;
