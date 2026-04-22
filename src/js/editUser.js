@@ -2,45 +2,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
 
   if (!token) {
-    // Se não tem token, redireciona para o login
     window.location.href = 'login.html';
     return;
   }
 
-  // Decodifica o token para pegar os dados do usuário
   try {
-    const payload = JSON.parse(atob(token.split('.')[1]));
-
-    // Preenche o nome com base no token
-    const nomeCompleto = payload.nome || '';
-    const partes = nomeCompleto.trim().split(' ');
-    const nome = partes[0] || '';
-    const sobrenome = partes.slice(1).join(' ') || '';
-
-    document.getElementById('input-nome').value = nome;
-    document.getElementById('input-sobrenome').value = sobrenome;
-
-    // Atualiza as iniciais do avatar
-    atualizarIniciais();
-
+    const partes = token.split('.');
+    if (partes.length === 3) {
+      const payload = JSON.parse(atob(partes[1]));
+      const nomeCompleto = payload.nome || '';
+      const partesNome = nomeCompleto.trim().split(' ');
+      document.getElementById('input-nome').value = partesNome[0] || '';
+      document.getElementById('input-sobrenome').value = partesNome.slice(1).join(' ') || '';
+      atualizarIniciais();
+    }
   } catch (error) {
-    console.error('Erro ao ler o token:', error);
+    console.warn('Token não pôde ser lido, campos em branco.');
   }
 
-  // Trava o scroll pois o modal está sempre visível nessa página
   document.body.classList.add('modal-open');
 });
 
 // volta para a página anterior
-
 function fecharModal() {
   document.body.classList.remove('modal-open');
 
-  // Fecha os blocos expansíveis
+  // fecha os blocos expansíveis
   fecharBloco('bloco-username', 'btn-username', 'Alterar nome de usuário');
   fecharBloco('bloco-senha', 'btn-senha', 'Alterar senha');
 
-  // Volta para a página anterior
+  // volta para a página anterior
   window.history.back();
 }
 

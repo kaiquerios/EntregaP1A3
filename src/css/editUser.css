@@ -1,12 +1,3 @@
-:root {
-  --bg-dark: #08090b;
-  --bg-card: #1c1f26;
-  --contrast: #c6a84b;
-  --text-main: #e8eaf0;
-  --text-muted: #9194a6;
-  --border: #2a2d3a;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -264,9 +255,16 @@ body.modal-open {
 }
 
 @media (max-width: 768px) {
+  .edit-user-overlay {
+    align-items: flex-start;
+    padding: 16px;
+    overflow-y: auto;
+  }
+
   .edit-user-container {
-    margin: 16px;
+    margin: 0;
     padding: 24px 20px;
+    width: 100%;
   }
 
   .edit-user-columns {
