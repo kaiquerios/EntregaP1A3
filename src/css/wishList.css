@@ -1,0 +1,123 @@
+/* Container Principal */
+.wishlist-container {
+    max-width: 1850px;
+    margin: 40px auto;
+    padding: 0 30px;
+    min-height: 60vh;
+}
+
+/* Cabeçalho */
+.wishlist-header {
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+}
+
+.wishlist-title {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.wishlist-description {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Grid de Jogos */
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Card Individual */
+.wishlist-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.wishlist-card:hover {
+    transform: translateY(-5px);
+}
+
+.wishlist-media {
+    height: 200px;
+    background-color: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.wishlist-info {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.game-name {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.game-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.game-price {
+    font-size: 1.5rem;
+    color: var(--contrast);
+    font-weight: bold;
+}
+
+/* Ações */
+.wishlist-actions {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid var(--border);
+}
+
+.btn-move-to-cart {
+    flex-grow: 1;
+    padding: 12px;
+    background-color: var(--contrast);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.btn-move-to-cart:hover {
+    filter: brightness(1.1);
+}
+
+.btn-remove {
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-remove:hover {
+    border-color: #ff4d4d;
+    background-color: rgba(255, 77, 77, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .wishlist-title { font-size: 1.8rem; }
+    .wishlist-grid { grid-template-columns: 1fr; }
+}
