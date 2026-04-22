@@ -113,18 +113,6 @@ function SignUp() {
                         </div>
                     </div>
 
-                    <div className="form-field form-field-compact">
-                        <label>Data de Nascimento</label>
-                        <input 
-                            type="text" 
-                            name="birthDate" 
-                            placeholder="DD/MM/AAAA" 
-                            value={formData.birthDate} 
-                            onChange={handleDateChange} 
-                            maxLength="10" 
-                        />
-                    </div>
-
                     <div className="form-field">
                         <label>Nickname</label>
                         <input type="text" name="username" required onChange={handleChange} />
@@ -148,6 +136,18 @@ function SignUp() {
                     <div className="form-field">
                         <label>Confirmar Senha</label>
                         <input type="password" name="confirmPassword" required onChange={handleChange} />
+                    </div>
+
+                    <div className="form-field form-field-compact">
+                        <label>Data de Nascimento</label>
+                        <input 
+                            type="text" 
+                            name="birthDate" 
+                            placeholder="DD/MM/AAAA" 
+                            value={formData.birthDate} 
+                            onChange={handleDateChange} 
+                            maxLength="10" 
+                        />
                     </div>
 
                     <button type="submit" className="btn-primary" disabled={isFormInvalid}>
