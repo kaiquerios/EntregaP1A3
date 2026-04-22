@@ -1,0 +1,144 @@
+
+:root{
+    --bg-dark: #121212;
+    --bg-card: #1c1c1c;
+    --border-: #2e2e2e;
+    --text: #eaeaea;
+    --text-muted: #9c9c9c;
+    --primary: #2f80ed;
+    --danger: #ff5c5c;
+}
+
+/* RESET */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
+}
+
+/* BODY */
+body{
+    background-color: var(--bg-dark);
+    color: var(--text);
+    padding: 40px 20px;
+}
+
+/* CONTAINER */
+.container{
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* Título */
+h1{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* LISTA */
+.cart {
+    margin-bottom: 20px;
+}
+
+/* PRODUTO */
+.product {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-);
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 14px;
+}
+
+*/ IMAGEM */
+.product img{
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-);
+}
+
+/* INFO */
+.product-info{
+    flex: 1;
+}
+
+.product-info strong{
+    display: block;
+    font-size: 15px;
+}
+
+.product-info span{
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* AÇÕES */
+.product-actions {
+    display: flex;
+    flex-direction: center;
+    gap: 8px;
+}
+
+.product-actions input{
+    width: 48px;
+    padding: 6px;
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-);
+    color: var(--text);
+    border-radius: 8px;
+}
+
+.product-actions input:focus{
+    outline: none;
+    border-color: var(--primary);
+}
+
+.remove {
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+}
+
+/* RESUMO */
+.summary {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.muted {
+    color: var(--text-muted);
+}
+
+.total {
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    font-size: 18px;
+}
+
+/* BOTÃO */
+.checkout {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #2f80ed, #56ccf2);
+    color: #fff
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
