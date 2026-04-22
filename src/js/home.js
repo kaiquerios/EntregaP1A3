@@ -42,8 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.removeItem('token'); 
                 localStorage.removeItem('cartCount'); 
                 cartCount = 0;
-                updateCartBadge();
-                renderUserArea(); 
+
+                window.location.href = 'home.html';
+
+                 
             });
 
         } else {
