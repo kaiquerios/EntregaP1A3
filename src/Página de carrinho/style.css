@@ -53,7 +53,7 @@ h1{
     margin-bottom: 14px;
 }
 
-*/ IMAGEM */
+/* IMAGEM */
 .product img{
     width: 56px;
     height: 56px;
@@ -138,7 +138,7 @@ h1{
     border: none;
     border-radius: 14px;
     background: linear-gradient(135deg, #2f80ed, #56ccf2);
-    color: #fff
+    color: #fff;
     cursor: pointer;
     transition: transform 0.2s, opacity 0.2s;
 }
