@@ -142,7 +142,7 @@
     }
 }
 
-.input-date: :-webkit-calendar-picker-indicator {
+.input-date :-webkit-calendar-picker-indicator {
     filter: invert (1);
     cursor: pointer;
 }
