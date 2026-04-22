@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="container">
+    <h1>Meu Carrinho</h1>
+
+    <section id="cart" class="cart">
+        <!  Produtos renderizados via JavaScript aqui!>
+    </section>
+
+    <section class="summary">
+        <div class="row">
+            <span>Subtotal:</span>
+            <span id="subtotal">R$ 0,00</span>
+        </div>
+
+        <div class="row">
+            <span>Frete:</span>
+            <span class="muted">A ser calculado</span>
+        </div>
+
+        <div class="row total">
+            <strong>Total:</strong>
+            <strong id="total">R$ 0,00</strong>
+        </div>
+
+        <button class="checkout">Finalizar Compra</button>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
