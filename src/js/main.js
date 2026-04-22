@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="user-name">Alisson Rodrigo</p>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <a href="#conta" class="dropdown-item">Editar conta</a>
+                    <a href="editUser.html" class="dropdown-item">Editar conta</a>
                     <a href="#pagamento" class="dropdown-item">Métodos de pagamento</a>
                     <div class="dropdown-divider"></div>
                     <button class="dropdown-item logout-btn" id="logout-btn">Finalizar sessão</button>
