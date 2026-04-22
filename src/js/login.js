@@ -24,10 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessage.style.display = 'none';
         
         console.log('Tentando login com:', { email, password });
-        
-        alert('Login realizado com sucesso! (Simulação)');
-        
-    
+
         localStorage.setItem('token', 'tokenabc');
         window.location.href = 'home.html'; 
         
