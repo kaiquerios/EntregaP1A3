@@ -1,3 +1,10 @@
+const CONFIG = {
+  timerSegundos: 3,
+  redirectUrl: 'home.html'
+};
+
+let timerSalvar = null;
+
 document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
 
@@ -86,45 +93,75 @@ function confirmarUsername() {
 function confirmarSenha() {
   const senhaAtual = document.getElementById('input-senha-atual').value;
   const novaSenha = document.getElementById('input-nova-senha').value;
-  const confirmarSenha = document.getElementById('input-confirmar-senha').value;
+  const confirmar = document.getElementById('input-confirmar-senha').value;
 
-  // Campos obrigatórios
-  if (!senhaAtual || !novaSenha || !confirmarSenha) {
-    alert('Por favor, preencha todos os campos de senha.');
-    return;
+  ['erro-senha-atual', 'erro-nova-senha', 'erro-confirmacao'].forEach(removerMensagem);
+
+  let temErro = false;
+
+  if (!senhaAtual) {
+    mostrarMensagemCampo('erro-senha-atual', 'input-senha-atual', 'Digite sua senha atual.', 'erro');
+    temErro = true;
   }
 
-  // Validação de confirmação das senhas
-  if (novaSenha !== confirmarSenha) {
-    alert('A nova senha e a confirmação não coincidem.');
-    return;
+  if (!novaSenha) {
+    mostrarMensagemCampo('erro-nova-senha', 'input-nova-senha', 'Digite a nova senha.', 'erro');
+    temErro = true;
+  } else {
+    const resultado = validarSenha(novaSenha);
+    if (!resultado.valida) {
+      mostrarMensagemCampo('erro-nova-senha', 'input-nova-senha', resultado.erros[0], 'erro');
+      temErro = true;
+    }
   }
 
-  // Validação
-  if (novaSenha.length < 6) {
-    alert('A nova senha precisa ter pelo menos 6 caracteres.');
-    return;
+  if (novaSenha && confirmar && novaSenha !== confirmar) {
+    mostrarMensagemCampo('erro-confirmacao', 'input-confirmar-senha', 'As senhas não coincidem.', 'erro');
+    temErro = true;
   }
 
-  // Limpa os campos e fecha o bloco
+  if (temErro) return;
+
   fecharBloco('bloco-senha', 'btn-senha', 'Alterar senha');
-  document.getElementById('input-senha-atual').value = '';
-  document.getElementById('input-nova-senha').value = '';
-  document.getElementById('input-confirmar-senha').value = '';
-
+  ['input-senha-atual', 'input-nova-senha', 'input-confirmar-senha'].forEach(id => {
+    document.getElementById(id).value = '';
+    document.getElementById(id).classList.remove('input-erro', 'input-sucesso');
+  });
   mostrarSucesso('✓ Senha alterada com sucesso!');
 }
 
 function salvarAlteracoes() {
   const nome = document.getElementById('input-nome').value.trim();
+  const btnSalvar = document.querySelector('.edit-user-save-btn');
 
-  // Validação
+  if (btnSalvar.disabled) return;
+
   if (!nome) {
-    alert('Por favor, preencha o campo Nome.');
+    mostrarMensagemCampo('erro-nome', 'input-nome', 'O nome é obrigatório.', 'erro');
     return;
   }
 
-  mostrarSucesso('✓ Alterações salvas com sucesso!');
+  removerMensagem('erro-nome');
+
+  btnSalvar.disabled = true;
+  let contador = CONFIG.timerSegundos;
+  btnSalvar.textContent = `Salvando... (${contador}s)`;
+  btnSalvar.style.opacity = '0.7';
+
+  mostrarSucesso('✓ Alterações salvas! Redirecionando...');
+
+  if (timerSalvar) clearInterval(timerSalvar);
+
+  timerSalvar = setInterval(() => {
+    contador--;
+    btnSalvar.textContent = `Salvando... (${contador}s)`;
+
+    if (contador <= 0) {
+      clearInterval(timerSalvar);
+      timerSalvar = null;
+      window.location.href = CONFIG.redirectUrl;
+    }
+  }, 1000);
 }
 
 function mostrarSucesso(mensagem) {
@@ -133,5 +170,37 @@ function mostrarSucesso(mensagem) {
   msg.style.display = 'inline';
   setTimeout(() => {
     msg.style.display = 'none';
-  }, 3000);
+  }, CONFIG.timerSegundos * 1000 + 500);
+}
+
+const REGRAS_SENHA = [
+  { id: 'min-caracteres', teste: (senha) => senha.length >= 8, mensagem: 'Mínimo de 8 caracteres' },
+  { id: 'numero', teste: (senha) => /[0-9]/.test(senha), mensagem: 'Pelo menos 1 número' }
+];
+
+function validarSenha(senha) {
+  const erros = REGRAS_SENHA
+    .filter(regra => !regra.teste(senha))
+    .map(regra => regra.mensagem);
+  return { valida: erros.length === 0, erros };
+}
+
+function mostrarMensagemCampo(idMensagem, idCampo, texto, tipo) {
+  removerMensagem(idMensagem);
+  const campo = document.getElementById(idCampo);
+  const msg = document.createElement('span');
+  msg.id = idMensagem;
+  msg.className = `campo-mensagem campo-${tipo}`;
+  msg.textContent = texto;
+  campo.parentElement.appendChild(msg);
+
+  if (tipo === 'erro') {
+    campo.classList.add('input-erro');
+    campo.classList.remove('input-sucesso');
+  }
+}
+
+function removerMensagem(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
 }

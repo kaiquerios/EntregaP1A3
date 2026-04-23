@@ -254,6 +254,51 @@ body.modal-open {
   animation: fadeSlideDown 0.3s ease;
 }
 
+/* Feedback visual nos inputs */
+.input-erro {
+  border-color: #e53935 !important;
+  box-shadow: 0 0 5px rgba(229, 57, 53, 0.2);
+}
+
+.input-sucesso {
+  border-color: #4caf50 !important;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+}
+
+/* Mensagens abaixo dos campos */
+.campo-mensagem {
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.campo-erro {
+  color: #e53935;
+}
+
+.campo-sucesso {
+  color: #4caf50;
+}
+
+/* Bloco de regras de senha */
+.regras-senha-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.regra-item {
+  font-size: 0.75rem;
+}
+
+.regra-ok {
+  color: #4caf50;
+}
+
+.regra-erro {
+  color: #e53935;
+}
+
 @media (max-width: 768px) {
   .edit-user-overlay {
     align-items: flex-start;
