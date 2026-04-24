@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmPassInput = document.getElementById('confirmPassword');
     const nameInputs = [document.getElementById('firstName'), document.getElementById('lastName')];
 
-    const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email); /*Utilizando Regex para validar a estrutura do E-mail*/
 
     const isDateReal = (dateStr) => {
         if (dateStr.length !== 10) return false;
@@ -18,16 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
                dateObj.getMonth() === month - 1 && 
                dateObj.getDate() === day &&
                year > 1900 && year <= new Date().getFullYear();
-    };
+    }; /*Para validar uma data real*/
 
     birthInput.addEventListener('input', (e) => {
-        let val = e.target.value.replace(/\D/g, '');
+        let val = e.target.value.replace(/\D/g, ''); /*Limpa tudo o que não for dígito*/
         let formatted = '';
 
         if (val.length > 0) {
             let day = val.substring(0, 2);
-            if (day.length === 2 && parseInt(day) > 31) day = '31';
-            if (day.length === 2 && parseInt(day) === 0) day = '01';
+            if (day.length === 2 && parseInt(day) > 31) day = '31'; /*Se o user digitar um número maior que 31, corrige para 31*/
+            if (day.length === 2 && parseInt(day) === 0) day = '01'; /*Se o user digitar um número menor que 01, corrige par 01*/
             formatted = day;
 
             if (val.length > 2) {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 formatted += '/' + val.substring(4, 8);
             }
         }
-        e.target.value = formatted;
+        e.target.value = formatted; /*Barras aparecem sozinhas enquanto o user digita*/
         checkForm();
     });
 
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
             checkForm();
         });
-    });
+    }); /*Tira tudo o que não for letra*/
 
     function checkForm() {
         const emailOk = isEmailValid(emailInput.value);
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSubmit.style.opacity = "0.5";
             btnSubmit.style.cursor = "not-allowed";
         }
-    }
+    } /*Vefifica se todos os campos foram preenchidos corretamente, para aí sim, liberar o botão de "Finalizar cadastro"*/
 
     form.addEventListener('input', checkForm);
 
