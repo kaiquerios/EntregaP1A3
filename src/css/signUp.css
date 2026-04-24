@@ -117,6 +117,19 @@ body {
     border-color: var(--contrast);
 }
 
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.75rem;
+    margin-top: 5px;
+    min-height: 2px; 
+    font-weight: 500;
+}
+
+.form-field input.input-error {
+    border-color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.05);
+}
+
 .btn-primary {
     background: var(--contrast);
     color: var(--bg-dark);

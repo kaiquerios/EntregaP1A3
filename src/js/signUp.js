@@ -7,8 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');
     const confirmPassInput = document.getElementById('confirmPassword');
     const nameInputs = [document.getElementById('firstName'), document.getElementById('lastName')];
+    
+    // Elementos de Feedback
+    const emailError = document.getElementById('emailError');
+    const confirmEmailError = document.getElementById('confirmEmailError');
+    const passError = document.getElementById('passError');
+    const confirmPassError = document.getElementById('confirmPassError');
 
-    const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email); /*Utilizando Regex para validar a estrutura do E-mail*/
+    const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
     const isDateReal = (dateStr) => {
         if (dateStr.length !== 10) return false;
@@ -18,63 +24,109 @@ document.addEventListener('DOMContentLoaded', () => {
                dateObj.getMonth() === month - 1 && 
                dateObj.getDate() === day &&
                year > 1900 && year <= new Date().getFullYear();
-    }; /*Para validar uma data real*/
+    };
 
+    // Máscara de Data (Lógica Original Mantida)
     birthInput.addEventListener('input', (e) => {
-        let val = e.target.value.replace(/\D/g, ''); /*Limpa tudo o que não for dígito*/
+        let val = e.target.value.replace(/\D/g, '');
         let formatted = '';
-
         if (val.length > 0) {
             let day = val.substring(0, 2);
-            if (day.length === 2 && parseInt(day) > 31) day = '31'; /*Se o user digitar um número maior que 31, corrige para 31*/
-            if (day.length === 2 && parseInt(day) === 0) day = '01'; /*Se o user digitar um número menor que 01, corrige par 01*/
+            if (day.length === 2 && parseInt(day) > 31) day = '31';
+            if (day.length === 2 && parseInt(day) === 0) day = '01';
             formatted = day;
-
             if (val.length > 2) {
                 let month = val.substring(2, 4);
                 if (month.length === 2 && parseInt(month) > 12) month = '12';
                 if (month.length === 2 && parseInt(month) === 0) month = '01';
                 formatted += '/' + month;
             }
-
-            if (val.length > 4) {
-                formatted += '/' + val.substring(4, 8);
-            }
+            if (val.length > 4) formatted += '/' + val.substring(4, 8);
         }
-        e.target.value = formatted; /*Barras aparecem sozinhas enquanto o user digita*/
+        e.target.value = formatted;
         checkForm();
     });
 
+    // Sanitização de Nomes
     nameInputs.forEach(input => {
         input.addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
             checkForm();
         });
-    }); /*Tira tudo o que não for letra*/
+    });
 
     function checkForm() {
-        const emailOk = isEmailValid(emailInput.value);
-        const dateOk = isDateReal(birthInput.value); 
-        const passwordsMatch = passwordInput.value === confirmPassInput.value && passwordInput.value !== '';
-        const emailsMatch = emailInput.value === confirmEmailInput.value && emailInput.value !== '';
+        const emailValue = emailInput.value;
+        const confirmEmailValue = confirmEmailInput.value;
+        const passValue = passwordInput.value;
+        const confirmPassValue = confirmPassInput.value;
+
+        // 1. Validação de Formato de E-mail
+        const emailOk = isEmailValid(emailValue);
+        if (emailValue.length > 0 && !emailOk) {
+            emailError.textContent = "E-mail inválido";
+            emailInput.classList.add('input-error');
+        } else {
+            emailError.textContent = "";
+            emailInput.classList.remove('input-error');
+        }
+
+        // 2. Comparação de E-mails 
+        const emailsMatch = emailValue === confirmEmailValue && confirmEmailValue !== '';
+        if (confirmEmailValue.length > 0 && !emailsMatch) {
+            confirmEmailError.textContent = "Os e-mails não coincidem";
+            confirmEmailInput.classList.add('input-error');
+        } else {
+            confirmEmailError.textContent = "";
+            confirmEmailInput.classList.remove('input-error');
+        }
+
+        // 3. Mínimo de 8 caracteres na Senha
+        const passLengthOk = passValue.length >= 8;
+        if (passValue.length > 0 && !passLengthOk) {
+            passError.textContent = "Mínimo de 8 caracteres";
+            passwordInput.classList.add('input-error');
+        } else {
+            passError.textContent = "";
+            passwordInput.classList.remove('input-error');
+        }
+
+        // 4. Comparação de Senhas
+        const passwordsMatch = passValue === confirmPassValue && confirmPassValue !== '';
+        if (confirmPassValue.length > 0 && !passwordsMatch) {
+            confirmPassError.textContent = "As senhas não coincidem";
+            confirmPassInput.classList.add('input-error');
+        } else {
+            confirmPassError.textContent = "";
+            confirmPassInput.classList.remove('input-error');
+        }
+
+        const dateOk = isDateReal(birthInput.value);
         const allFieldsFilled = [...form.querySelectorAll('input')].every(input => input.value.trim() !== '');
 
-        if (emailOk && dateOk && passwordsMatch && emailsMatch && allFieldsFilled) {
+        // Habilitar botão apenas se TUDO estiver correto
+        if (emailOk && emailsMatch && dateOk && passLengthOk && passwordsMatch && allFieldsFilled) {
             btnSubmit.disabled = false;
-            btnSubmit.style.opacity = "1";
-            btnSubmit.style.cursor = "pointer";
         } else {
             btnSubmit.disabled = true;
-            btnSubmit.style.opacity = "0.5";
-            btnSubmit.style.cursor = "not-allowed";
         }
-    } /*Vefifica se todos os campos foram preenchidos corretamente, para aí sim, liberar o botão de "Finalizar cadastro"*/
+    }
 
     form.addEventListener('input', checkForm);
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        
+        // Simulação de Token para Login
+        const userSession = {
+            name: document.getElementById('firstName').value,
+            token: "jwt_" + Math.random().toString(36).substring(2),
+            loginTime: new Date().toISOString()
+        };
+
+        localStorage.setItem('token', JSON.stringify(userSession));
+        
         alert("Cadastro realizado com sucesso!");
-        console.log("Dados prontos:", Object.fromEntries(new FormData(form)));
+        window.location.href = "home.html";
     });
 });
