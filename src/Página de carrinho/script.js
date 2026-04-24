@@ -1,85 +1,62 @@
-const cartEl = document.getElementById('cart');
-const subtotalEl = document.getElementById('subtotal');
-const totalEl = document.getElementById('total');
-
-let cart = JSON.parse(localStorage.getItem('cart')) || [
-    {
-        id: 1,
-        name: 'Produto 1',
-        price: 29.99,
-        quantity: 2,
-        Image: 'https://cdn-icons-png.flaticon.com/512/2933/2933116.png'
-    },
-    {
-        id: 2,
-        name: 'Outro produto',
-        price: 39.99,
-        quantity: 2,
-        Image: 'https://cdn-icons-png.flaticon.com/512/709/709496.png'
-    }
-];
+document.addEventListener('DOMContentLoaded', () => {
     
-function formatPrice(value) {
-    return value.toLocaleString('pt-BR', { 
-        style: 'currency',
-        currency: 'BRL' 
-     });
-}
 
-function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
+    const cartList = document.getElementById('cart-list');
+    const totalVal = document.getElementById('total-val');
+    const subtotalVal = document.getElementById('subtotal-val');
 
-function renderCart() {
-    cartEl.innerHTML = '';
-    
-    cart.forEach(item => {
-        const itemEl = document.createElement('div');
-        el.classname = 'product';
-        itemEl.innerHTML = `
-            <img src="${item.Image}" alt="">
-            <div class="product-info">
-                <strong>${item.name}</strong>
-                <span>${formatPrice(item.price)}</span>
+    // 2. Seleção dos itens 4 e 15 do db.js
+    const indicesDesejados = [4, 15];
+    const itensNoCarrinho = indicesDesejados.map(index => jogosDB[index]);
+
+    function renderCart() {
+        if (!cartList) return;
+
+        let valorTotal = 0;
+        cartList.innerHTML = '';
+
+        itensNoCarrinho.forEach((jogo) => {
+            valorTotal += jogo.preco;
+            const precoFormatado = jogo.preco.toFixed(2).replace('.', ',');
+
+            // Criando o card retangular
+            const itemHtml = `
+                <div class="cart-item">
+                    <div class="item-img-placeholder">🎮</div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <h3 class="item-name">${jogo.nome}</h3>
+                            <span class="item-category">${jogo.categoria}</span>
+                        </div>
+                        <p class="item-meta">${jogo.empresa} | ${jogo.ano}</p>
+                    </div>
+                    <div class="item-price-area">
+                        <p class="item-price">R$ ${precoFormatado}</p>
+                        <button class="btn-remove-item" title="Remover item">🗑️</button>
+                    </div>
                 </div>
-                <div class="product-actions">
-                    <input type="number" min="1" value="${item.quantity}" data-id="${item.id}"
-                    <button class="remove-btn" data-id="${item.id}">Remover</button>
-                </div>
-        `;
-        cartEl.appendChild(itemEl);
-    });
+            `;
+            cartList.innerHTML += itemHtml;
+        });
 
-    updateTotals();
-    saveCart();
-}
-
-function updateTotals() {
-    const subtotal = cart.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-    );
-    subtotalEl.textContent = formatPrice(subtotal);
-    totalEl.textContent = formatPrice(subtotal);
-}
-
-cartEl.addEventListener('input', e => {
-    if (e.target.type === 'number') {
-        const id = Number(e.target.dataset.id);
-        const product = cart.find(p=> p.id === id);
-        const quantity = Number(e.target.value);
-        updateTotals();
-        saveCart();
-       }
+        // Atualizando os valores do resumo
+        const totalFinal = valorTotal.toFixed(2).replace('.', ',');
+        totalVal.textContent = `R$ ${totalFinal}`;
+        subtotalVal.textContent = `R$ ${totalFinal}`;
+        
+        
+        const badgeCart = document.querySelector('.badge-cart');
+        if(badgeCart) badgeCart.textContent = itensNoCarrinho.length;
     }
-});
 
-cartEl.addEventListener('click', e => {
-    if (e.target.classList.contains('remove-btn')) {
-        const id = Number(e.target.dataset.id);
-        cart = cart.filter(item => item.id !== id);
-        renderCart();
+    const btnFinish = document.getElementById('btn-finish');
+    if (btnFinish) {
+        btnFinish.addEventListener('click', () => {
+            alert('Compra finalizada com sucesso! Os jogos foram adicionados à sua biblioteca.');
+            localStorage.removeItem('cartCount');
+            window.location.href = 'library.html';
+        });
     }
-});
 
-renderCart();
+    renderCart();
+});
