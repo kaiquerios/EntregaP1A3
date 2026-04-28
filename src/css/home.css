@@ -24,7 +24,9 @@
     font-weight: 800;
     color: var(--text-main);
     letter-spacing: -1px;
+    text-decoration: none;
 }
+
 .navbar-logo img {
     width: 30px;
     height: 30px;
