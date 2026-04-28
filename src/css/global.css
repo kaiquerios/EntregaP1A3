@@ -8,6 +8,15 @@
     --border: #2a2d3a; /*Cor de borda*/
 }
 
+:root[data-theme="light"] {
+    --bg-dark: #adadad; 
+    --bg-card: #d8d8d8; 
+    --contrast: #386dbd;
+    --text-main: #1a1a1a; 
+    --text-muted: #5a5c69; 
+    --border: #d1d3e2; 
+}
+
 *{
     box-sizing: border-box;
     margin: 0;

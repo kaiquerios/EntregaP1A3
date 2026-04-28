@@ -345,7 +345,7 @@
 }
 
 .media-card {
-    background: rgba(255, 255, 255, 0.02); 
+    background: color-mix(in srgb, var(--bg-dark) 60%, transparent);
     width: 320px; 
     height: 450px;
     border-radius: 15px; 
