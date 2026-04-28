@@ -17,6 +17,10 @@
     --border: #d1d3e2; 
 }
 
+body, .navbar, .category-card, .banner-home, .footer-container, .search-bar, .user-dropdown {
+    transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;

@@ -274,7 +274,7 @@
     margin-bottom: 25px; }
 
 .banner-tag {
-    background-color: var(--bg-card); 
+    background-color: color-mix(in srgb, var(--bg-dark) 60%, transparent); 
     padding: 5px 15px; 
     border-radius: 20px;
     font-size: 0.85rem; 
