@@ -177,6 +177,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnCart.style.color = '';
             }, 1500);
         });
+
+        const btnDetails = document.querySelector('.btn-details');
+            if (btnDetails) {
+            btnDetails.addEventListener('click', () => {
+            window.location.href = 'gamePage.html';
+    });
+}
     }
 
     // Lógica utilizada para o darkmode/lightmode

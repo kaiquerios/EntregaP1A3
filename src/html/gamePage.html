@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Witcher 3: Wild Hunt - CLT Gaming</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/gamePage.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="mobile-menu-icon" id="mobile-menu-btn">☰</div>
+           
+            <a href="home.html" class="navbar-logo">
+                <img src="../assets/img/icon_clt.png" alt="Icone">
+                <span>CLT</span> Gaming
+            </a>
+          
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar jogos...">
+                <span class="search-icon">🔎</span>
+            </div>
+
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="home.html" class="navbar-item">Loja</a>
+                <a href="library.html" class="navbar-item">Biblioteca</a>
+                <a href="#rankings" class="navbar-item">Rankings</a>
+            </div>
+        </div>
+
+        <div class="navbar-actions">
+            <div class="action-icon" id="theme-toggle-btn" title="Alternar Tema">☀️</div>
+            <div class="action-icon notification" id="nav-notification">
+                🔔 <span class="badge-notification">0</span>
+            </div>
+            <a href="cart.html" class="cart-btn">
+                <div class="action-icon cart" id="nav-cart">
+                    🛒 <span class="badge-cart">0</span>
+                </div>
+            </a>
+            <div id="user-area" class="user-profile"></div>
+        </div>
+    </nav>
+
+    <main class="game-page">
+        <section class="game-hero">
+            <div class="media-block">
+                <div class="media-main" id="media-main-container">Midia principal</div>
+
+                <div class="media-thumbs" id="media-thumbs-container">
+                    <div class="media-thumb active">Midia 1</div>
+                    <div class="media-thumb">Midia 2</div>
+                    <div class="media-thumb">Midia 3</div> 
+                    <div class="media-thumb">Midia 4</div>
+                    <div class="media-thumb">Midia 5</div>  
+                </div>
+            </div>
+
+            <aside class="game-sidebar">
+                <div class="game-card">
+                    <div class="game-cover">🎮</div>
+
+                    <h1 class="game-card-title">The Witcher 3: Wild Hunt</h1>
+
+                    <div class="game-tags">
+                        <span class="game-tag">RPG</span>
+                        <span class="game-tag">Ação</span>
+                        <span class="game-tag">Mundo Aberto</span>
+                    </div>
+
+                    <div class="game-price">R$ 59,99</div>
+
+                    <button class="btn btn-primary btn-buy">Comprar</button>
+                    <button class="btn btn-secondary btn-cart">Adicionar ao carrinho</button>
+                    <button class="btn btn-secondary btn-wishlist">♡ Lista de desejos</button>
+
+                    <div class="game-info-table">
+                        <div class="game-info-row">
+                            <span class="game-info-label">Desenvolvedor</span>
+                            <span class="game-info-value">CD Projekt Red</span>
+                        </div>
+                        <div class="game-info-row">
+                            <span class="game-info-label">Distribuidora</span>
+                            <span class="game-info-value">CD Projekt Red</span>
+                        </div>
+                        <div class="game-info-row">
+                            <span class="game-info-label">Lançamento</span>
+                            <span class="game-info-value">2015</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Inserir análise</h2>
+            <div class="section-card">
+                <div class="review-form">
+                    <div class="user-avatar-lg">AR</div>
+                    <div class="review-form-content">
+                        <textarea class="review-textarea" placeholder="Escreva sua análise aqui..."></textarea>
+                        <div class="review-form-footer">
+                            <div class="star-rating">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <button class="btn-publish">Publicar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Sobre o jogo</h2>
+            <div class="section-card">
+                <p class="about-text">
+                    Um RPG de mundo aberto aclamado pela crítica. Em The Witcher 3: Wild Hunt, você joga como Geralt de Rívia, um caçador de monstros mercenário. Diante de você está um continente devastado pela guerra e infestado de monstros que você pode explorar à vontade.
+                </p>
+            </div>
+        </section>
+
+        <div class="requirements-grid">
+            <div class="requirements-block">
+                <h3>Requisitos mínimos</h3>
+                <div class="req-row"><span class="req-label">SO:</span><span class="req-value">Windows 7/8/10 (64-bit)</span></div>
+                <div class="req-row"><span class="req-label">CPU:</span><span class="req-value">Intel Core i5-2500K</span></div>
+                <div class="req-row"><span class="req-label">RAM:</span><span class="req-value">6 GB</span></div>
+                <div class="req-row"><span class="req-label">GPU:</span><span class="req-value">Nvidia GPU GeForce GTX 660</span></div>
+                <div class="req-row"><span class="req-label">Armazen:</span><span class="req-value">35 GB de espaço livre</span></div>
+            </div>
+
+            <div class="requirements-block">
+                <h3>Requisitos recomendados</h3>
+                <div class="req-row"><span class="req-label">SO:</span><span class="req-value">Windows 10 (64-bit)</span></div>
+                <div class="req-row"><span class="req-label">CPU:</span><span class="req-value">Intel Core i7 3770</span></div>
+                <div class="req-row"><span class="req-label">RAM:</span><span class="req-value">8 GB</span></div>
+                <div class="req-row"><span class="req-label">GPU:</span><span class="req-value">Nvidia GPU GeForce GTX 770</span></div>
+                <div class="req-row"><span class="req-label">Armazen:</span><span class="req-value">35 GB de espaço livre</span></div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Jogos similares</h2>
+            <div class="similar-games">
+                <div class="similar-game-card">
+                    
+                    <span class="similar-game-name">Skyrim</span>
+                </div>
+                <div class="similar-game-card">
+                
+                    <span class="similar-game-name">Cyberpunk 2077</span>
+                </div>
+                <div class="similar-game-card">
+                   
+                    <span class="similar-game-name">Horizon Zero Dawn</span>
+                </div>
+                <div class="similar-game-card">
+                   
+                    <span class="similar-game-name">Red Dead 2</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Análises de outros usuários</h2>
+            <div class="reviews-list">
+                <div class="review-card">
+                    <div>
+                        <div class="user-avatar-lg">MJ</div>
+                        <p class="reviewer-name">Maria Julia</p>
+                    </div>
+                    <div class="review-card-body">
+                        <div class="review-card-text">Obra de arte absoluta. A narrativa, as missões secundárias e o mundo são imersivos demais. Jogo obrigatório para fãs de RPG!</div>
+                        <div class="review-card-footer">
+                            <div class="star-rating">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="user-avatar-lg">JS</div>
+                        <p class="reviewer-name">João Silva</p>
+                    </div>
+                    <div class="review-card-body">
+                        <div class="review-card-text">O combate demora um pouco para engrenar, mas a história compensa tudo. O Gwent roubou umas boas 50 horas da minha vida.</div>
+                        <div class="review-card-footer">
+                            <div class="star-rating">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star">★</span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-see-all">Ver todas as análises</button>
+        </section>
+    </main>
+
+    <footer class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2 class="footer-logo">CLT <span>Gaming</span></h2>
+                <p class="footer-description">
+                    Sua loja definitiva para aquela boa jogatina após um dia cansativo.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#lancamentos">Lançamentos</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#assinatura">Assinatura</a></li>
+                    <li><a href="#suporte">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#sobre">Sobre nós</a></li>
+                    <li><a href="#termos">Termos de serviço</a></li>
+                    <li><a href="#privacidade">Política de privacidade</a></li>
+                    <li><a href="#reembolso">Política de reembolso</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CLT Gaming. Todos os direitos reservados.</p>
+            <div class="footer-socials">
+                <span class="social-icon">X</span>
+                <span class="social-icon">IG</span>
+                <span class="social-icon">DC</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/gamePage.js"></script>
+</body>
+</html>
