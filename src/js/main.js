@@ -54,7 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if(navNotif) navNotif.style.display = 'none';
             if(navCart) navCart.style.display = 'none';
 
-            userArea.innerHTML = `<a href="login.html" class="btn-login">Entrar</a>`;
+           
+            userArea.innerHTML = `
+            <a href="signup.html" class="btn-signup">Criar conta</a>
+            <a href="login.html" class="btn-login">Entrar</a>
+            `;
         }
     }
 
