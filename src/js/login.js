@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessage.textContent = 'Por favor, preencha todos os campos.';
             errorMessage.style.display = 'block'; // Mostra a caixa de erro
             return;
-        }
+       //Se passou pela validação, esconde a mensagem de erro//
+        e }
 
-        // Se passou pela validação, esconde a mensagem de erro
-        errorMessage.style.display = 'none';
+        /errorMessage.style.display = 'none';/
         
         console.log('Tentando login com:', { email, password });
         
