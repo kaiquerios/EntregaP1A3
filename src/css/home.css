@@ -98,7 +98,7 @@
 .navbar-actions { 
     display: flex; 
     align-items: center; 
-    gap: 25px; 
+    gap: 15px; 
     padding: 0 10px;
 }
 
@@ -172,7 +172,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-  /*   position: relative; */ 
+    position: relative;
 }
 
 .user-dropdown{

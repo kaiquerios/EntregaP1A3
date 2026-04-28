@@ -861,10 +861,42 @@
         text-align: center; 
     }
 }
+@media (max-width: 768px){
+    .navbar-menu {
+        position: fixed; 
+        left: -100%; 
+        top: 70px; 
+        flex-direction: column;
+        background-color: var(--bg-card);
+        width: 100%; 
+        height: calc(100vh - 70px);
+        gap: 0; 
+        transition: 0.3s; 
+        border-top: 1px solid var(--border); 
+        z-index: 999;
+    }
+
+    .navbar-menu.active { 
+        left: 0; 
+    }
+    .navbar-item { 
+        padding: 20px; 
+        border-bottom: 1px solid var(--border); 
+        width: 100%; 
+        text-align: center; 
+        font-size: 1.1rem; }
+
+    .navbar-container { 
+        gap: 10px; 
+        width: 100%; 
+        justify-content: flex-start; }
+
+    .navbar-logo { 
+        font-size: 0.9rem; 
+    }
+}
 
 @media (max-width: 600px) {
-    
-
     .game-page {
         padding: 30px 16px 40px;
     }
