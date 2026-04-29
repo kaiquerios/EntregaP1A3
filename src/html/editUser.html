@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/global.css" />
   </head>
   <body>
-
     <!-- Modal -->
     <div class="edit-user-overlay" id="modal">
       <div class="edit-user-container">
@@ -39,14 +38,14 @@
         <div class="edit-user-columns">
           <!-- Coluna esquerda -->
           <div class="edit-user-col">
+            <!-- Nome completo -->
             <div class="edit-user-field">
-              <label class="edit-user-label">Nome</label>
+              <label class="edit-user-label">Nome completo</label>
               <input
                 class="edit-user-input"
                 type="text"
-                id="input-nome"
-                placeholder="Seu nome"
-                value="Augusto"
+                id="input-nome-completo"
+                placeholder="Seu nome completo"
                 oninput="atualizarIniciais()"
               />
             </div>
@@ -90,18 +89,6 @@
 
           <!-- Coluna direita -->
           <div class="edit-user-col">
-            <div class="edit-user-field">
-              <label class="edit-user-label">Sobrenome</label>
-              <input
-                class="edit-user-input"
-                type="text"
-                id="input-sobrenome"
-                placeholder="Seu sobrenome"
-                value="Ribeiro"
-                oninput="atualizarIniciais()"
-              />
-            </div>
-
             <button
               class="edit-user-toggle-btn"
               id="btn-senha"
@@ -117,31 +104,61 @@
             >
               <div class="edit-user-field">
                 <label class="edit-user-label">Senha atual</label>
-                <input
-                  class="edit-user-input"
-                  type="password"
-                  id="input-senha-atual"
-                  placeholder="Digite sua senha atual"
-                />
+                <div class="input-senha-wrapper">
+                  <input
+                    class="edit-user-input"
+                    type="password"
+                    id="input-senha-atual"
+                    placeholder="Digite sua senha atual"
+                  />
+                  <button
+                    type="button"
+                    class="btn-olho"
+                    onclick="toggleSenha('input-senha-atual', this)"
+                  >
+                    👁
+                  </button>
+                </div>
               </div>
+
               <div class="edit-user-field">
                 <label class="edit-user-label">Nova senha</label>
-                <input
-                  class="edit-user-input"
-                  type="password"
-                  id="input-nova-senha"
-                  placeholder="Digite a nova senha"
-                />
+                <div class="input-senha-wrapper">
+                  <input
+                    class="edit-user-input"
+                    type="password"
+                    id="input-nova-senha"
+                    placeholder="Digite a nova senha"
+                  />
+                  <button
+                    type="button"
+                    class="btn-olho"
+                    onclick="toggleSenha('input-nova-senha', this)"
+                  >
+                    👁
+                  </button>
+                </div>
               </div>
+
               <div class="edit-user-field">
                 <label class="edit-user-label">Confirmar nova senha</label>
-                <input
-                  class="edit-user-input"
-                  type="password"
-                  id="input-confirmar-senha"
-                  placeholder="Confirme a nova senha"
-                />
+                <div class="input-senha-wrapper">
+                  <input
+                    class="edit-user-input"
+                    type="password"
+                    id="input-confirmar-senha"
+                    placeholder="Confirme a nova senha"
+                  />
+                  <button
+                    type="button"
+                    class="btn-olho"
+                    onclick="toggleSenha('input-confirmar-senha', this)"
+                  >
+                    👁
+                  </button>
+                </div>
               </div>
+
               <button class="edit-user-confirm-btn" onclick="confirmarSenha()">
                 Confirmar
               </button>

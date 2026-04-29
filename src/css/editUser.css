@@ -299,6 +299,34 @@ body.modal-open {
   color: #e53935;
 }
 
+/* Wrapper do campo de senha com botão de olho */
+.input-senha-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-senha-wrapper .edit-user-input {
+  padding-right: 44px;
+}
+
+.btn-olho {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-muted);
+  padding: 0;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.btn-olho:hover {
+  color: var(--text-main);
+}
+
 @media (max-width: 768px) {
   .edit-user-overlay {
     align-items: flex-start;
