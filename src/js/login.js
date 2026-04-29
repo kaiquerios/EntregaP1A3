@@ -26,6 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Tentando login com:', { email, password });
         
         alert('Login realizado com sucesso! (Simulação)');
+
+        // captura o clique no link de recuperação
+document.querySelector('.forgot-link').addEventListener('click', (e) => {
+    // se não tiver uma página real, evita que o link recarregue a página
+    // e.preventDefault(); 
+    console.log('Iniciando fluxo de recuperação de senha...');
+    alert('Um link de recuperação seria enviado para: ' + emailInput.value);
+});
         
     
         localStorage.setItem('token', 'tokenabc');
