@@ -7,13 +7,14 @@
 body {
   background-color: var(--bg-dark);
   color: var(--text-main);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 body.modal-open {
   overflow: hidden;
 }
 
+/* Overlay */
 .edit-user-overlay {
   position: fixed;
   top: 0;
@@ -28,18 +29,20 @@ body.modal-open {
   overflow: hidden;
 }
 
+/* Container */
 .edit-user-container {
   background-color: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 36px 48px 28px;
-  width: 85%;
-  max-width: 860px;
+  border-radius: 16px;
+  padding: 28px 36px 24px;
+  width: 80%;
+  max-width: 560px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 18px;
 }
 
+/* Cabeçalho */
 .edit-user-header {
   display: flex;
   justify-content: space-between;
@@ -47,7 +50,7 @@ body.modal-open {
 }
 
 .edit-user-title {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-main);
 }
@@ -65,54 +68,43 @@ body.modal-open {
   color: var(--contrast);
 }
 
+/* Avatar */
 .edit-user-avatar-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .edit-user-avatar {
-  width: 76px;
-  height: 76px;
+  width: 68px;
+  height: 68px;
   background-color: var(--bg-dark);
   border: 2px solid var(--contrast);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: var(--contrast);
 }
 
-.edit-user-email-field {
+/* Formulário */
+.edit-user-form {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-}
-
-.edit-user-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-.edit-user-col {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .edit-user-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .edit-user-label {
-  font-size: 0.75rem;
+  font-size: 0.73rem;
   color: var(--text-muted);
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -129,7 +121,7 @@ body.modal-open {
   outline: none;
   transition: border-color 0.3s;
   width: 100%;
-  height: 44px;
+  height: 42px;
 }
 
 .edit-user-input:focus {
@@ -143,10 +135,11 @@ body.modal-open {
 }
 
 .edit-user-hint {
-  font-size: 0.73rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
 }
 
+/* Botão toggle */
 .edit-user-toggle-btn {
   background: transparent;
   border: 1px solid var(--border);
@@ -156,9 +149,11 @@ body.modal-open {
   font-size: 0.85rem;
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.25s, color 0.25s;
+  transition:
+    border-color 0.25s,
+    color 0.25s;
   width: 100%;
-  height: 44px;
+  height: 42px;
 }
 
 .edit-user-toggle-btn:hover {
@@ -166,18 +161,19 @@ body.modal-open {
   color: var(--contrast);
 }
 
+/* Bloco expansível */
 .edit-user-expandable {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 16px;
+  gap: 12px;
+  padding: 14px;
   background-color: var(--bg-dark);
   border: 1px solid var(--border);
   border-radius: 8px;
-  width: 100%;
   animation: fadeSlideDown 0.2s ease;
 }
 
+/* Animação para o bloco */
 @keyframes fadeSlideDown {
   from {
     opacity: 0;
@@ -189,6 +185,7 @@ body.modal-open {
   }
 }
 
+/* Botão confirmar */
 .edit-user-confirm-btn {
   background: transparent;
   border: 1px solid var(--contrast);
@@ -207,12 +204,13 @@ body.modal-open {
   color: var(--bg-dark);
 }
 
+/* Rodapé */
 .edit-user-footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 12px;
-  padding-top: 20px;
+  padding-top: 16px;
   border-top: 1px solid var(--border);
 }
 
@@ -220,11 +218,11 @@ body.modal-open {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  border-radius: 8px;
   padding: 10px 20px;
   font-size: 0.88rem;
   cursor: pointer;
   transition: color 0.2s;
+  border-radius: 8px;
 }
 
 .edit-user-cancel-btn:hover {
@@ -247,13 +245,6 @@ body.modal-open {
   opacity: 0.85;
 }
 
-.edit-user-success {
-  font-size: 0.85rem;
-  color: #4caf50;
-  margin-right: auto;
-  animation: fadeSlideDown 0.3s ease;
-}
-
 /* Feedback visual nos inputs */
 .input-erro {
   border-color: #e53935 !important;
@@ -265,41 +256,19 @@ body.modal-open {
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
 }
 
-/* Mensagens abaixo dos campos */
 .campo-mensagem {
-  font-size: 0.75rem;
+  font-size: 0.73rem;
   margin-top: 2px;
 }
 
 .campo-erro {
   color: #e53935;
 }
-
 .campo-sucesso {
   color: #4caf50;
 }
 
-/* Bloco de regras de senha */
-.regras-senha-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 6px;
-}
-
-.regra-item {
-  font-size: 0.75rem;
-}
-
-.regra-ok {
-  color: #4caf50;
-}
-
-.regra-erro {
-  color: #e53935;
-}
-
-/* Wrapper do campo de senha com botão de olho */
+/* Mostrar senha */
 .input-senha-wrapper {
   position: relative;
   display: flex;
@@ -327,6 +296,34 @@ body.modal-open {
   color: var(--text-main);
 }
 
+/* Feedback inline */
+.feedback-inline {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  display: none;
+}
+
+.feedback-inline.sucesso {
+  background-color: rgba(76, 175, 80, 0.12);
+  border: 1px solid #4caf50;
+  color: #4caf50;
+}
+
+.feedback-inline.erro {
+  background-color: rgba(229, 57, 53, 0.12);
+  border: 1px solid #e53935;
+  color: #e53935;
+}
+
+.feedback-inline.aviso {
+  background-color: rgba(255, 152, 0, 0.12);
+  border: 1px solid #ff9800;
+  color: #ff9800;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
   .edit-user-overlay {
     align-items: flex-start;
@@ -336,11 +333,8 @@ body.modal-open {
 
   .edit-user-container {
     margin: 0;
-    padding: 24px 20px;
+    padding: 20px 16px;
     width: 100%;
-  }
-
-  .edit-user-columns {
-    grid-template-columns: 1fr;
+    max-width: 100%;
   }
 }

@@ -1,9 +1,10 @@
 const CONFIG = {
-  timerSegundos: 5,
+  timerSegundos: 3,
   redirectUrl: "home.html",
 };
 
 let timerSalvar = null;
+let senhaConfirmada = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
@@ -18,8 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (partes.length === 3) {
       const payload = JSON.parse(atob(partes[1]));
       const nomeCompleto = payload.nome || "";
-      const partesNome = nomeCompleto.trim().split(" ");
-
       document.getElementById("input-nome-completo").value = nomeCompleto;
       atualizarIniciais();
     }
@@ -29,11 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.body.classList.add("modal-open");
 
-  // Lógica utilizada para o darkmode/lightmode
   const themeToggleBtn = document.getElementById("theme-toggle-btn");
   const currentTheme = localStorage.getItem("theme");
 
-  // Mudança de icone
   if (currentTheme === "light") {
     document.documentElement.setAttribute("data-theme", "light");
     if (themeToggleBtn) themeToggleBtn.textContent = "🌙";
@@ -43,14 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggleBtn.addEventListener("click", () => {
       const isLight =
         document.documentElement.getAttribute("data-theme") === "light";
-
       if (isLight) {
-        // Muda para Dark Mode
         document.documentElement.removeAttribute("data-theme");
         localStorage.setItem("theme", "dark");
         themeToggleBtn.textContent = "☀️";
       } else {
-        // Muda para Light Mode
         document.documentElement.setAttribute("data-theme", "light");
         localStorage.setItem("theme", "light");
         themeToggleBtn.textContent = "🌙";
@@ -59,19 +53,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// volta para a página anterior
 function fecharModal() {
   document.body.classList.remove("modal-open");
 
-  // fecha os blocos expansíveis
   fecharBloco("bloco-username", "btn-username", "Alterar nome de usuário");
-  fecharBloco("bloco-senha", "btn-senha", "Alterar senha");
+  document.getElementById("input-username").value = "";
 
-  // volta para a página anterior
+  fecharBloco("bloco-senha", "btn-senha", "Alterar senha");
+  ["input-senha-atual", "input-nova-senha", "input-confirmar-senha"].forEach(
+    (id) => {
+      document.getElementById(id).value = "";
+      document
+        .getElementById(id)
+        .classList.remove("input-erro", "input-sucesso");
+      document.getElementById(id).type = "password";
+    },
+  );
+
+  [
+    "erro-senha-atual",
+    "erro-nova-senha",
+    "erro-confirmacao",
+    "erro-username",
+  ].forEach(removerMensagem);
+
+  senhaConfirmada = false;
+  esconderFeedback();
+
   window.history.back();
 }
-
-// abre/fecha blocos
 
 function toggleBloco(idBloco, idBotao, textoOriginal) {
   const bloco = document.getElementById(idBloco);
@@ -81,8 +91,16 @@ function toggleBloco(idBloco, idBotao, textoOriginal) {
   if (estaAberto) {
     fecharBloco(idBloco, idBotao, textoOriginal);
   } else {
+    if (idBloco === "bloco-senha") {
+      fecharBloco("bloco-username", "btn-username", "Alterar nome de usuário");
+    } else if (idBloco === "bloco-username") {
+      fecharBloco("bloco-senha", "btn-senha", "Alterar senha");
+    }
+
+    if (idBloco === "bloco-senha") senhaConfirmada = false;
+
     bloco.style.display = "flex";
-    botao.textContent = "X Cancelar";
+    botao.textContent = "✕ Cancelar";
     bloco.style.animation = "none";
     bloco.offsetHeight;
     bloco.style.animation = "fadeSlideDown 0.2s ease";
@@ -93,8 +111,6 @@ function fecharBloco(idBloco, idBotao, textoOriginal) {
   document.getElementById(idBloco).style.display = "none";
   document.getElementById(idBotao).textContent = textoOriginal;
 }
-
-// atualiza iniciais em tempo real
 
 function atualizarIniciais() {
   const nomeCompleto = document
@@ -111,24 +127,40 @@ function atualizarIniciais() {
     inicial1 + inicial2 || "--";
 }
 
+function mostrarFeedback(tipo, mensagem) {
+  const el = document.getElementById("feedback-inline");
+  el.textContent = mensagem;
+  el.className = `feedback-inline ${tipo}`;
+  el.style.display = "block";
+
+  setTimeout(() => {
+    el.style.display = "none";
+  }, 4000);
+}
+
+function esconderFeedback() {
+  const el = document.getElementById("feedback-inline");
+  if (el) el.style.display = "none";
+}
+
 function confirmarUsername() {
   const username = document.getElementById("input-username").value.trim();
 
   if (!username) {
-    alert("Por favor, digite um novo nome de usuário.");
+    mostrarFeedback("aviso", "Digite um novo nome de usuário.");
     return;
   }
 
   fecharBloco("bloco-username", "btn-username", "Alterar nome de usuário");
   document.getElementById("input-username").value = "";
-  mostrarSucesso("✓ Nome de usuário atualizado com sucesso!");
+  mostrarFeedback("sucesso", "Nome de usuário atualizado com sucesso!");
 }
 
 function toggleSenha(idCampo, botao) {
   const campo = document.getElementById(idCampo);
-  const visivel = campo.type === 'text';
-  campo.type = visivel ? 'password' : 'text';
-  botao.textContent = visivel ? '👁' : '??';
+  const visivel = campo.type === "text";
+  campo.type = visivel ? "password" : "text";
+  botao.textContent = visivel ? "👁" : "??";
 }
 
 function confirmarSenha() {
@@ -185,6 +217,8 @@ function confirmarSenha() {
 
   if (temErro) return;
 
+  senhaConfirmada = true;
+
   fecharBloco("bloco-senha", "btn-senha", "Alterar senha");
   ["input-senha-atual", "input-nova-senha", "input-confirmar-senha"].forEach(
     (id) => {
@@ -194,7 +228,8 @@ function confirmarSenha() {
         .classList.remove("input-erro", "input-sucesso");
     },
   );
-  mostrarSucesso("✓ Senha alterada com sucesso!");
+
+  mostrarFeedback("sucesso", "Senha alterada com sucesso!");
 }
 
 function salvarAlteracoes() {
@@ -217,12 +252,31 @@ function salvarAlteracoes() {
 
   removerMensagem("erro-nome");
 
+  const blocoSenhaAberto =
+    document.getElementById("bloco-senha").style.display !== "none";
+  if (blocoSenhaAberto && !senhaConfirmada) {
+    mostrarFeedback(
+      "aviso",
+      "Confirme a alteração de senha antes de salvar.",
+    );
+    return;
+  }
+
+  const usernamePreenchido = document.getElementById("input-username").value;
+  if (usernamePreenchido) {
+    mostrarFeedback(
+      "aviso",
+      "Confirme a alteração de nome de usuário antes de salvar.",
+    );
+    return;
+  }
+
   btnSalvar.disabled = true;
   let contador = CONFIG.timerSegundos;
   btnSalvar.textContent = `Salvando... (${contador}s)`;
   btnSalvar.style.opacity = "0.7";
 
-  mostrarSucesso("✓ Alterações salvas! Redirecionando...");
+  mostrarFeedback("sucesso", "Alterações salvas! Redirecionando...");
 
   if (timerSalvar) clearInterval(timerSalvar);
 
@@ -236,18 +290,6 @@ function salvarAlteracoes() {
       window.location.href = CONFIG.redirectUrl;
     }
   }, 1000);
-}
-
-function mostrarSucesso(mensagem) {
-  const msg = document.getElementById("msg-sucesso");
-  msg.textContent = mensagem;
-  msg.style.display = "inline";
-  setTimeout(
-    () => {
-      msg.style.display = "none";
-    },
-    CONFIG.timerSegundos * 1000 + 500,
-  );
 }
 
 const REGRAS_SENHA = [
@@ -273,19 +315,18 @@ function validarSenha(senha) {
 function mostrarMensagemCampo(idMensagem, idCampo, texto, tipo) {
   removerMensagem(idMensagem);
   const campo = document.getElementById(idCampo);
-  const msg = document.createElement('span');
+  const msg = document.createElement("span");
   msg.id = idMensagem;
   msg.className = `campo-mensagem campo-${tipo}`;
   msg.textContent = texto;
 
-  // Se o campo estiver dentro de um wrapper, sobe um nível a mais
-  const wrapper = campo.closest('.input-senha-wrapper');
+  const wrapper = campo.closest(".input-senha-wrapper");
   const pai = wrapper ? wrapper.parentElement : campo.parentElement;
   pai.appendChild(msg);
 
-  if (tipo === 'erro') {
-    campo.classList.add('input-erro');
-    campo.classList.remove('input-sucesso');
+  if (tipo === "erro") {
+    campo.classList.add("input-erro");
+    campo.classList.remove("input-sucesso");
   }
 }
 
