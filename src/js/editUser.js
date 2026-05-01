@@ -205,7 +205,15 @@ function confirmarSenha() {
     }
   }
 
-  if (novaSenha && confirmar && novaSenha !== confirmar) {
+  if (!confirmar) {
+    mostrarMensagemCampo(
+      "erro-confirmacao",
+      "input-confirmar-senha",
+      "Confirme a nova senha.",
+      "erro",
+    );
+    temErro = true;
+  } else if (novaSenha !== confirmar) {
     mostrarMensagemCampo(
       "erro-confirmacao",
       "input-confirmar-senha",
@@ -255,10 +263,7 @@ function salvarAlteracoes() {
   const blocoSenhaAberto =
     document.getElementById("bloco-senha").style.display !== "none";
   if (blocoSenhaAberto && !senhaConfirmada) {
-    mostrarFeedback(
-      "aviso",
-      "Confirme a alteração de senha antes de salvar.",
-    );
+    mostrarFeedback("aviso", "Confirme a alteração de senha antes de salvar.");
     return;
   }
 
@@ -273,21 +278,28 @@ function salvarAlteracoes() {
 
   btnSalvar.disabled = true;
   let contador = CONFIG.timerSegundos;
-  btnSalvar.textContent = `Salvando... (${contador}s)`;
+  btnSalvar.textContent = "Salvando...";
   btnSalvar.style.opacity = "0.7";
 
-  mostrarFeedback("sucesso", "Alterações salvas! Redirecionando...");
+  mostrarFeedback(
+    "sucesso",
+    `Alterações salvas! Redirecionando em ${contador}s...`,
+  );
 
   if (timerSalvar) clearInterval(timerSalvar);
 
   timerSalvar = setInterval(() => {
     contador--;
-    btnSalvar.textContent = `Salvando... (${contador}s)`;
 
     if (contador <= 0) {
       clearInterval(timerSalvar);
       timerSalvar = null;
       window.location.href = CONFIG.redirectUrl;
+    } else {
+      mostrarFeedback(
+        "sucesso",
+        `Alterações salvas! Redirecionando em ${contador}s...`,
+      );
     }
   }, 1000);
 }
