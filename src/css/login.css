@@ -153,3 +153,17 @@
 .signin-footer a:hover {
     text-decoration: underline;
 }
+
+.forgot-link {
+    align-self: flex-end; /*alinha o link à direita dentro da coluna*/
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-top: 8px;
+    transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+    color: var(--contrast);
+    text-decoration: underline;
+}
