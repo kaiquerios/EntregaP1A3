@@ -8,6 +8,19 @@
     --border: #2a2d3a; /*Cor de borda*/
 }
 
+:root[data-theme="light"] {
+    --bg-dark: #adadad; 
+    --bg-card: #d8d8d8; 
+    --contrast: #386dbd;
+    --text-main: #1a1a1a; 
+    --text-muted: #5a5c69; 
+    --border: #d1d3e2; 
+}
+
+body, .navbar, .category-card, .banner-home, .footer-container, .search-bar, .user-dropdown {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;

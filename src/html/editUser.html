@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Perfil - CLT Gaming</title>
+    <link rel="stylesheet" href="../css/editUser.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+  </head>
+  <body>
+
+    <!-- Modal -->
+    <div class="edit-user-overlay" id="modal">
+      <div class="edit-user-container">
+        <!-- Cabeçalho -->
+        <div class="edit-user-header">
+          <h2 class="edit-user-title">Editar Perfil</h2>
+          <button class="edit-user-close" onclick="fecharModal()">✕</button>
+        </div>
+
+        <!-- Avatar -->
+        <div class="edit-user-avatar-section">
+          <div class="edit-user-avatar" id="avatar-iniciais">AR</div>
+        </div>
+
+        <!-- Email bloqueado -->
+        <div class="edit-user-field edit-user-email-field">
+          <label class="edit-user-label">Email</label>
+          <input
+            class="edit-user-input edit-user-input--readonly"
+            type="email"
+            value="augusto@email.com"
+            readonly
+          />
+          <span class="edit-user-hint">O email não pode ser alterado.</span>
+        </div>
+
+        <!-- Layout duas colunas -->
+        <div class="edit-user-columns">
+          <!-- Coluna esquerda -->
+          <div class="edit-user-col">
+            <div class="edit-user-field">
+              <label class="edit-user-label">Nome</label>
+              <input
+                class="edit-user-input"
+                type="text"
+                id="input-nome"
+                placeholder="Seu nome"
+                value="Augusto"
+                oninput="atualizarIniciais()"
+              />
+            </div>
+
+            <button
+              class="edit-user-toggle-btn"
+              id="btn-username"
+              onclick="
+                toggleBloco(
+                  'bloco-username',
+                  'btn-username',
+                  'Alterar nome de usuário',
+                )
+              "
+            >
+              Alterar nome de usuário
+            </button>
+
+            <div
+              class="edit-user-expandable"
+              id="bloco-username"
+              style="display: none"
+            >
+              <div class="edit-user-field">
+                <label class="edit-user-label">Novo nome de usuário</label>
+                <input
+                  class="edit-user-input"
+                  type="text"
+                  id="input-username"
+                  placeholder="@novo_usuario"
+                />
+              </div>
+              <button
+                class="edit-user-confirm-btn"
+                onclick="confirmarUsername()"
+              >
+                Confirmar
+              </button>
+            </div>
+          </div>
+
+          <!-- Coluna direita -->
+          <div class="edit-user-col">
+            <div class="edit-user-field">
+              <label class="edit-user-label">Sobrenome</label>
+              <input
+                class="edit-user-input"
+                type="text"
+                id="input-sobrenome"
+                placeholder="Seu sobrenome"
+                value="Ribeiro"
+                oninput="atualizarIniciais()"
+              />
+            </div>
+
+            <button
+              class="edit-user-toggle-btn"
+              id="btn-senha"
+              onclick="toggleBloco('bloco-senha', 'btn-senha', 'Alterar senha')"
+            >
+              Alterar senha
+            </button>
+
+            <div
+              class="edit-user-expandable"
+              id="bloco-senha"
+              style="display: none"
+            >
+              <div class="edit-user-field">
+                <label class="edit-user-label">Senha atual</label>
+                <input
+                  class="edit-user-input"
+                  type="password"
+                  id="input-senha-atual"
+                  placeholder="Digite sua senha atual"
+                />
+              </div>
+              <div class="edit-user-field">
+                <label class="edit-user-label">Nova senha</label>
+                <input
+                  class="edit-user-input"
+                  type="password"
+                  id="input-nova-senha"
+                  placeholder="Digite a nova senha"
+                />
+              </div>
+              <div class="edit-user-field">
+                <label class="edit-user-label">Confirmar nova senha</label>
+                <input
+                  class="edit-user-input"
+                  type="password"
+                  id="input-confirmar-senha"
+                  placeholder="Confirme a nova senha"
+                />
+              </div>
+              <button class="edit-user-confirm-btn" onclick="confirmarSenha()">
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="edit-user-footer">
+          <span
+            class="edit-user-success"
+            id="msg-sucesso"
+            style="display: none"
+          >
+            Alterações salvas com sucesso!
+          </span>
+          <button class="edit-user-cancel-btn" onclick="fecharModal()">
+            Cancelar
+          </button>
+          <button class="edit-user-save-btn" onclick="salvarAlteracoes()">
+            Salvar alterações
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/editUser.js"></script>
+  </body>
+</html>

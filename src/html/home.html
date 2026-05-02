@@ -16,14 +16,12 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="mobile-menu-icon" id="mobile-menu-btn">☰</div>
-            
-            <div class="navbar-logo">
-
-                <img src="../assets/img/icon_clt.png" alt="Icone">
-                <span>CLT</span> Gaming
-                
-            </div>
-            
+           
+            <a href="home.html"" class="navbar-logo">
+            <img src="../assets/img/icon_clt.png" alt="Icone">
+            <span>CLT</span> Gaming
+            </a>
+          
             <div class="search-bar">
                 <input type="text" placeholder="Buscar jogos...">
                 <span class="search-icon">🔎</span>
@@ -31,18 +29,22 @@
 
             <div class="navbar-menu" id="navbar-menu">
                 <a href="#loja" class="navbar-item active">Loja</a>
-                <a href="#biblioteca" class="navbar-item">Biblioteca</a>
+                <a href="library.html" class="navbar-item">Biblioteca</a>
                 <a href="#rankings" class="navbar-item">Rankings</a>
             </div>
         </div>
 
         <div class="navbar-actions">
+            <div class="action-icon" id="theme-toggle-btn" title="Alternar Tema">☀️</div>
             <div class="action-icon notification" id="nav-notification">
                 🔔 <span class="badge-notification">0</span>
             </div>
-            <div class="action-icon cart" id="nav-cart">
+            <a href="cart.html" class="cart-btn">
+                <div class="action-icon cart" id="nav-cart">
                 🛒 <span class="badge-cart">0</span>
             </div>
+            </a>
+            
 
             <div id="user-area" class="user-profile">
             </div>

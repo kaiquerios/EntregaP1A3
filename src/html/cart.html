@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLT Gaming - Meu Carrinho</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/home.css"> 
+    <link rel="stylesheet" href="../css/cart.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="mobile-menu-icon" id="mobile-menu-btn">☰</div>
+            <a href="home.html"" class="navbar-logo">
+            <img src="../assets/img/icon_clt.png" alt="Icone">
+            <span>CLT</span> Gaming
+            </a>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar jogos...">
+                <span class="search-icon">🔎</span>
+            </div>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="home.html" class="navbar-item">Loja</a>
+                <a href="library.html" class="navbar-item">Biblioteca</a>
+                <a href="#ranking" class="navbar-item">Rankings</a>
+            </div>
+        </div>
+        <div class="navbar-actions">
+            <div class="action-icon" id="theme-toggle-btn" title="Alternar Tema">☀️</div>
+            <div class="action-icon notification" id="nav-notification">
+                🔔 <span class="badge-notification">0</span>
+            </div>
+            <div class="action-icon cart" id="nav-cart">
+                🛒 <span class="badge-cart">0</span>
+            </div>
+            <div id="user-area" class="user-profile"></div>
+        </div>
+    </nav>
+
+    <main class="cart-container">
+        <div class="cart-layout">
+            <section class="cart-items-section">
+                <h1 class="page-title">Meu Carrinho</h1>
+                <div id="cart-list">
+                    </div>
+            </section>
+
+            <aside class="cart-summary">
+                <h2 class="summary-title">Resumo do Pedido</h2>
+                <div class="summary-details">
+                    <div class="summary-line">
+                        <span>Subtotal</span>
+                        <span id="subtotal-val">R$ 0,00</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Descontos</span>
+                        <span class="discount">- R$ 0,00</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-line total">
+                        <span>Total</span>
+                        <span id="total-val">R$ 0,00</span>
+                    </div>
+                </div>
+                <button class="btn-checkout" id="btn-finish">Finalizar Compra</button>
+                <a href="home.html" class="btn-continue">Continuar Comprando</a>
+            </aside>
+        </div>
+    </main>
+
+
+        <footer class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2 class="footer-logo">CLT <span>Gaming</span></h2>
+                <p class="footer-description">
+                    Sua loja definitiva para aquela boa jogatina após um dia cansativo.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#lancamentos">Lançamentos</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#assinatura">Assinatura</a></li>
+                    <li><a href="#suporte">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#sobre">Sobre nós</a></li>
+                    <li><a href="#termos">Termos de serviço</a></li>
+                    <li><a href="#privacidade">Política de privacidade</a></li>
+                    <li><a href="#reembolso">Política de reembolso</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CLT Gaming. Todos os direitos reservados.</p>
+            <div class="footer-socials">
+                <span class="social-icon">X</span>
+                <span class="social-icon">IG</span>
+                <span class="social-icon">DC</span>
+            </div>
+        </div>
+    </footer>
+    </footer>
+
+    <script src="../js/db.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html>

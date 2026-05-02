@@ -1,0 +1,88 @@
+.library-container {
+    max-width: 1850px;
+    margin: 40px auto;
+    padding: 0 30px;
+    min-height: 60vh;
+}
+
+.library-header {
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+}
+
+.library-title {
+    font-size: 2.5rem;
+    color: var(--text-main);
+}
+
+.library-description {
+    color: var(--text-muted);
+}
+
+.library-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.library-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.library-media {
+    height: 180px;
+    background-color: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+}
+
+.library-info {
+    padding: 20px;
+}
+
+.progress-bar-container {
+    background: var(--bg-dark);
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    background: var(--contrast);
+    height: 100%;
+    border-radius: 2px;
+}
+
+.library-actions {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-play {
+    flex-grow: 1;
+    padding: 12px;
+    background-color: var(--contrast);
+    color: var(--text-main);
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-manage {
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    border-radius: 6px;
+    cursor: pointer;
+}

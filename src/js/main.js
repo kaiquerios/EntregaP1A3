@@ -19,8 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="user-name">Alisson Rodrigo</p>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <a href="#conta" class="dropdown-item">Editar conta</a>
-                    <a href="#pagamento" class="dropdown-item">Métodos de pagamento</a>
+                    <a href="#purchaseHistory" class="dropdown-item">Histórico de compras</a>
+                    <a href="wishList.html" class="dropdown-item">Lista de desejos</a>
+                    <a href="editUser.html" class="dropdown-item">Editar conta</a>
+                    <a href="#methodsPayment" class="dropdown-item">Métodos de pagamento</a>
                     <div class="dropdown-divider"></div>
                     <button class="dropdown-item logout-btn" id="logout-btn">Finalizar sessão</button>
                 </div>
@@ -41,8 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.removeItem('token'); 
                 localStorage.removeItem('cartCount'); 
                 cartCount = 0;
-                updateCartBadge();
-                renderUserArea(); 
+
+                window.location.href = 'home.html';
+
+                 
             });
 
         } else {
@@ -50,7 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if(navNotif) navNotif.style.display = 'none';
             if(navCart) navCart.style.display = 'none';
 
-            userArea.innerHTML = `<a href="login.html" class="btn-login">Entrar</a>`;
+           
+            userArea.innerHTML = `
+            <a href="signup.html" class="btn-signup">Criar conta</a>
+            <a href="login.html" class="btn-login">Entrar</a>
+            `;
         }
     }
 
@@ -169,5 +177,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnCart.style.color = '';
             }, 1500);
         });
+
+        const btnDetails = document.querySelector('.btn-details');
+            if (btnDetails) {
+            btnDetails.addEventListener('click', () => {
+            window.location.href = 'gamePage.html';
+    });
+}
     }
+
+    // Lógica utilizada para o darkmode/lightmode
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const currentTheme = localStorage.getItem('theme');
+
+    // Mudança de icone
+    if (currentTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        if (themeToggleBtn) themeToggleBtn.textContent = '🌙';
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            
+            if (isLight) {
+                // Muda para Dark Mode
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.textContent = '☀️';
+            } else {
+                // Muda para Light Mode
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.textContent = '🌙';
+            }
+        });
+    }
+
 });
