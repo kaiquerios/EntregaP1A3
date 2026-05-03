@@ -238,7 +238,7 @@ body.modal-open {
   color: var(--contrast);
 }
 
-/* Formulário */
+/* Formulario */
 .edit-user-form {
   display: flex;
   flex-direction: column;
