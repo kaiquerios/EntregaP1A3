@@ -1,18 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('signUpForm');
     const btnSubmit = document.getElementById('btnSubmit');
-    const birthInput = document.getElementById('birthDate');
     const emailInput = document.getElementById('email');
     const confirmEmailInput = document.getElementById('confirmEmail');
     const passwordInput = document.getElementById('password');
     const confirmPassInput = document.getElementById('confirmPassword');
-    const nameInputs = [document.getElementById('firstName'), document.getElementById('lastName')];
+    const fullNameInput = document.getElementById('fullName');
     
     // Elementos de Feedback
     const emailError = document.getElementById('emailError');
     const confirmEmailError = document.getElementById('confirmEmailError');
     const passError = document.getElementById('passError');
     const confirmPassError = document.getElementById('confirmPassError');
+    const nameError = document.getElementById('nameError');
 
     const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
@@ -26,33 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
                year > 1900 && year <= new Date().getFullYear();
     };
 
-    // Máscara de Data (Lógica Original Mantida)
-    birthInput.addEventListener('input', (e) => {
-        let val = e.target.value.replace(/\D/g, '');
-        let formatted = '';
-        if (val.length > 0) {
-            let day = val.substring(0, 2);
-            if (day.length === 2 && parseInt(day) > 31) day = '31';
-            if (day.length === 2 && parseInt(day) === 0) day = '01';
-            formatted = day;
-            if (val.length > 2) {
-                let month = val.substring(2, 4);
-                if (month.length === 2 && parseInt(month) > 12) month = '12';
-                if (month.length === 2 && parseInt(month) === 0) month = '01';
-                formatted += '/' + month;
-            }
-            if (val.length > 4) formatted += '/' + val.substring(4, 8);
-        }
-        e.target.value = formatted;
-        checkForm();
-    });
-
-    // Sanitização de Nomes
-    nameInputs.forEach(input => {
-        input.addEventListener('input', (e) => {
+    
+    fullNameInput.addEventListener('input', (e) => {
+        // Permite apenas letras e espaços
             e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
-            checkForm();
-        });
+    
+    // Validação simples: verificar se tem pelo menos um espaço (nome e sobrenome)
+        if (e.target.value.trim().split(' ').length < 2 && e.target.value.length > 0) {
+            nameError.textContent = "Digite seu nome completo";
+        } else {
+            nameError.textContent = "";
+        }
+    checkForm();
     });
 
     function checkForm() {
@@ -60,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const confirmEmailValue = confirmEmailInput.value;
         const passValue = passwordInput.value;
         const confirmPassValue = confirmPassInput.value;
+        const nameValue = fullNameInput.value.trim();
 
         // 1. Validação de Formato de E-mail
         const emailOk = isEmailValid(emailValue);
@@ -101,11 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmPassInput.classList.remove('input-error');
         }
 
-        const dateOk = isDateReal(birthInput.value);
+        const nameOk = nameValue.split(' ').length >= 2 && nameValue.length > 3;
+
         const allFieldsFilled = [...form.querySelectorAll('input')].every(input => input.value.trim() !== '');
 
         // Habilitar botão apenas se TUDO estiver correto
-        if (emailOk && emailsMatch && dateOk && passLengthOk && passwordsMatch && allFieldsFilled) {
+        if (emailOk && emailsMatch && passLengthOk && passwordsMatch && nameOk && allFieldsFilled) {
             btnSubmit.disabled = false;
         } else {
             btnSubmit.disabled = true;
@@ -119,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Simulação de Token para Login
         const userSession = {
-            name: document.getElementById('firstName').value,
+            name: document.getElementById('fullName').value,
             token: "jwt_" + Math.random().toString(36).substring(2),
             loginTime: new Date().toISOString()
         };
